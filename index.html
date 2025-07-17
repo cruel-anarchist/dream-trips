@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Турфирма «Мечта»</title>
+  <link rel="icon" href="assets/img/logo.png" type="image/png" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="assets/css/style.css"/>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-content">
+      <img src="assets/img/logo.png" alt="Логотип Турфирма Мечта" class="hero-logo"/>
+      <h1>Турфирма «Мечта»</h1>
+      <p>Пешие походы • PВД (выходного дня) • Сплавы • Зимние приключения</p>
+      <a href="#services" class="btn-primary">Наши походы</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- О компании -->
+    <section id="about" class="card-wrapper">
+      <div class="card">
+        <h2>О нас</h2>
+        <p>«Мечта» — ведущая турфирма по организации походов по России. Мы уже более 10 лет дарим незабываемые приключения: от лёгких выездов на выходные до многодневных марафонов по горам и рекам.</p>
+      </div>
+    </section>
+
+    <!-- Услуги / Форматы туров -->
+    <section id="services">
+      <h2>Наши направления</h2>
+      <div class="grid">
+        <div class="service-card">
+          <h3>Пешие походы</h3>
+          <p>Треккинг по тропам Карелии, Алтая и Кавказа.</p>
+        </div>
+        <div class="service-card">
+          <h3>PВД (выходного дня)</h3>
+          <p>Короткие выезды под Москвой и в Подмосковье.</p>
+        </div>
+        <div class="service-card">
+          <h3>Сплавы</h3>
+          <p>Рафтинг и каякинг по живописным рекам.</p>
+        </div>
+        <div class="service-card">
+          <h3>Зимние походы</h3>
+          <p>Лыжные и снегоходные туры по заснеженным просторам.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Контакты и форма бронирования -->
+    <section id="contact" class="card-wrapper">
+      <div class="card">
+        <h2>Свяжитесь с нами</h2>
+        <p>Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+        <p>Email: <a href="mailto:info@mechta-tours.ru">info@mechta-tours.ru</a></p>
+        <form action="https://formspree.io/f/ВАШ_КОД" method="POST" class="contact-form">
+          <input type="text" name="name" placeholder="Ваше имя" required>
+          <input type="tel" name="phone" placeholder="Телефон" required>
+          <input type="email" name="email" placeholder="E-mail" required>
+          <textarea name="message" placeholder="Ваше сообщение" required></textarea>
+          <button type="submit" class="btn-primary">Отправить</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; Турфирма «Мечта», 2025
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
