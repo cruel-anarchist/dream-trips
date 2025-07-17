@@ -96,10 +96,12 @@ h2 {
   transform:translateY(-4px);
 }
 .service-card img {
-  width:64px;
-  height:64px;
-  flex-shrink:0;
-  margin-right:1rem;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;   /* сохраняет пропорции и вписывает изображение в контейнер */
+  object-position: center; /* центрирует иконку внутри контейнера */
+  flex-shrink: 0;
+  margin-right: 1rem;
 }
 .service-card-content {
   flex:1;
