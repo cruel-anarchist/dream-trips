@@ -82,7 +82,28 @@ h2 {
   padding:0 1rem;
 }
 
-/* === Новое для .service-card === */
+.about-wrapper {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: .5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.about-logo {
+  width: 120px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.about-text {
+  flex: 1;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
 .service-card {
   display: flex;
   align-items: center;
@@ -92,9 +113,11 @@ h2 {
   box-shadow:0 2px 8px rgba(0,0,0,0.05);
   transition:transform .2s;
 }
+
 .service-card:hover {
   transform:translateY(-4px);
 }
+
 .service-card img {
   width: 64px;
   height: 64px;
@@ -103,13 +126,16 @@ h2 {
   flex-shrink: 0;
   margin-right: 1rem;
 }
+
 .service-card-content {
   flex:1;
 }
+
 .service-card-content h3 {
   font-family:var(--font-heading);
   margin:0 0 0.5rem;
 }
+
 .service-card-content p {
   font-size:.95rem;
   margin:0;
@@ -121,6 +147,7 @@ h2 {
   gap:1rem;
   margin-top:1rem;
 }
+
 .contact-form input,
 .contact-form textarea {
   width:100%;
@@ -129,6 +156,7 @@ h2 {
   border-radius:.25rem;
   font-size:1rem;
 }
+
 .contact-form button {
   background:var(--color-primary);
   color:#fff;
@@ -139,6 +167,7 @@ h2 {
   cursor:pointer;
   transition:background .2s;
 }
+
 .contact-form button:hover {
   background:#003366;
 }
@@ -154,8 +183,25 @@ footer {
 }
 
 /* == Адаптив == */
-@media (max-width:768px) {
-  .hero { height:auto; padding:2rem 1rem; }
-  .hero-content h1 { font-size:2rem; }
-  .hero-content p { font-size:1rem; }
+@media (max-width: 768px) {
+  /* Hero */
+  .hero {
+    height: auto;
+    padding: 2rem 1rem;
+  }
+  .header-content h1 {
+    font-size: 2rem;
+  }
+  .header-content p {
+    font-size: 1rem;
+  }
+
+  /* Секция «О нас» */
+  .about-wrapper {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-logo {
+    margin: 0 auto 1rem;
+  }
 }
