@@ -139,3 +139,8 @@ footer {
   .hero-content h1 { font-size:2rem; }
   .hero-content p { font-size:1rem; }
 }
+
+#directions h2 {
+  text-align: center;
+  margin-bottom: 1.5rem; /* можно подправить отступ под заголовком */
+}
