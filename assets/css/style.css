@@ -23,7 +23,7 @@ h2 {
 .hero {
   position: relative;
   height: 60vh;
-  background: url('../img/hero.jpg') center/cover no-repeat;
+  background: url('../img/head.png') center/cover no-repeat;
   display: flex; align-items:center; justify-content:center;
   text-align:center; color:#fff;
 }
