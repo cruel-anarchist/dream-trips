@@ -242,8 +242,9 @@ footer {
   color: #fff;
 }
 .has-dropdown .dropdown .filter-item.active {
-  outline: 2px solid #fff;
-  outline-offset: -2px;
+  background: #003366; /* более тёмный синий — чтобы отличался от обычного */
+  color: #fff;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.05); /* для эффекта нажатия */
 }
 .has-dropdown .dropdown .filter-item:hover {
   background: var(--color-primary);
