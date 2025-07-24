@@ -222,11 +222,15 @@ footer {
   flex: 1;
   padding: .75rem 1rem;
   border: none;
-  background: var(--color-accent);
+  background: var(--color-accent);    /* оранжевый фон */
   color: #fff;
   cursor: pointer;
   font-family: var(--font-heading);
-  transition: background .2s;
+  transition: background .2s;          /* плавный переход цвета */
+}
+
+.filter-bar .filter-item + .filter-item {
+  border-left: 1px solid rgba(255,255,255,0.3);
 }
 
 .filter-bar .filter-item + .filter-item {
