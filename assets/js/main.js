@@ -1,62 +1,62 @@
-document.addEventListener('DOMContentLoaded', async () => {
-  // 1. Загрузка карточек
-  const resp = await fetch('events-cards.html');
-  const html  = await resp.text();
-  const tmp   = document.createElement('div');
-  tmp.innerHTML = html;
-  // Берём именно внутренности #cards-container
-  const cardsHtml = tmp.querySelector('#cards-container').innerHTML;
-  document.getElementById('cards-container').innerHTML = cardsHtml;
-
-  // 2. Инициализируем фильтры
-  initFilters();
-});
-
-function initFilters() {
-  const mainBtns = document.querySelectorAll('#main-filters .filter-item');
+document.addEventListener('DOMContentLoaded', () => {
+  const mainBtns = document.querySelectorAll('#main-filters > .filter-item-wrapper > .filter-item');
   const subBtns  = document.querySelectorAll('#pvd-filters .filter-item');
-  const subbar   = document.getElementById('pvd-filters');
-  const cards    = document.querySelectorAll('#cards-container .service-card');
+  const cardsContainer = document.getElementById('cards-container');
 
-  function filterCards(filter) {
-    cards.forEach(card => {
-      // категория и (для PVD) субкатегория лежат в data-*
-      const cat = card.dataset.category;
-      const sub = card.dataset.sub; 
-      let ok = false;
-      if (filter === 'all') ok = true;
-      else if (filter === 'pvd') ok = (cat === 'pvd');
-      else if (filter === 'big') ok = (cat === 'big');
-      else if (filter === 'allpvd') ok = (cat === 'pvd');
-      else ok = (sub === filter);
-      card.style.display = ok ? 'flex' : 'none';
-    });
+  // 1) Подтягиваем карточки из external файла
+  async function loadCards() {
+    const resp = await fetch('events-cards.html');
+    const html = await resp.text();
+    // помещаем внутрь контейнера
+    cardsContainer.innerHTML = html;
+    initFiltering(); // привязываем фильтры
   }
 
-  // основная панель
-  mainBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      mainBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      if (btn.dataset.filter === 'pvd') {
-        subbar.style.display = 'flex';
-        filterCards('allpvd');
-      } else {
-        subbar.style.display = 'none';
+  // 2) Инициализация логики фильтрации уже загруженных .service-card
+  function initFiltering() {
+    const cards = document.querySelectorAll('#cards-container .service-card');
+    function showAll() {
+      cards.forEach(c => c.style.display = 'flex');
+    }
+    function filterCards(filter) {
+      if (filter === 'all') return showAll();
+      cards.forEach(card => {
+        const types = card.dataset.type.split(' ');
+        card.style.display = types.includes(filter) ? 'flex' : 'none';
+      });
+    }
+
+    // главные кнопки
+    mainBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        mainBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // если это ПВД — показываем dropdown и показываем allpvd
+        const filter = btn.dataset.filter;
+        if (filter === 'pvd') {
+          // активируем в субфильтрах first
+          subBtns.forEach(b => b.classList.remove('active'));
+          subBtns[0].classList.add('active');
+          filterCards('allpvd');
+        } else {
+          filterCards(filter);
+        }
+      });
+    });
+
+    // кнопки субфильтров
+    subBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        subBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
         filterCards(btn.dataset.filter);
-      }
+      });
     });
-  });
 
-  // под‑панель PVD
-  subBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      subBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      filterCards(btn.dataset.filter);
-    });
-  });
+    // стартовый показ всех
+    showAll();
+  }
 
-  // показываем всё по умолчанию
-  filterCards('all');
-}
+  loadCards();
+});
