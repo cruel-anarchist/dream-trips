@@ -21,28 +21,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function filterCards(filter) {
       if (filter === 'all') {
-        showAll();
-      } else if (filter === 'allpvd') {
+        return showAll();
+      }
+      if (filter === 'allpvd') {
+        // показываем все, у кого в data-type есть 'pvd'
         cards.forEach(card => {
           const types = card.dataset.type.split(' ');
           card.style.display = types.includes('pvd') ? 'flex' : 'none';
         });
-      } else {
-        cards.forEach(card => {
-          const types = card.dataset.type.split(' ');
-          card.style.display = types.includes(filter) ? 'flex' : 'none';
-        });
+        return;
       }
+      cards.forEach(card => {
+        const types = card.dataset.type.split(' ');
+        card.style.display = types.includes(filter) ? 'flex' : 'none';
+      });
     }
 
     // Главные фильтры
     mainBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        const f = btn.dataset.filter;
+
+        // подсветка главного меню
         mainBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        const f = btn.dataset.filter;
+
         if (f === 'pvd') {
-          // показываем все PVD по умолчанию
+          // при выборе ПВД — активируем «Все ПВД» в подменю
           subBtns.forEach(b => b.classList.remove('active'));
           subBtns[0].classList.add('active');
           filterCards('allpvd');
@@ -55,26 +60,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // Подфильтры
     subBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        // 1) Убираем выделение со всех суб‑кнопок и выделяем нажатую
+        const f = btn.dataset.filter;
+
+        // подсветка суб‑меню
         subBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-      
-        // 2) Убедимся, что в главном меню "ПВД" тоже подсвечен
+
+        // **и** обязательно оставить “ПВД” в главном меню активным
         mainBtns.forEach(b => {
           if (b.dataset.filter === 'pvd') {
             b.classList.add('active');
           } else {
-            // остальным главным пунктам сбрасываем active, если они вдруг были
             b.classList.remove('active');
           }
         });
-      
-        // 3) Применяем фильтр под‑пункта
-        filterCards(btn.dataset.filter);
+
+        // фильтруем по суб‑меню
+        filterCards(f);
       });
     });
 
-    // старт
+    // стартовое состояние — показать всё
     showAll();
   }
 
