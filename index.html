@@ -1,114 +1,114 @@
 <!DOCTYPE html>
-<html lang="ру">
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Турфирма «Мечта»</title>
+  <title>Тестовые карточки — Мечта</title>
   <link rel="icon" href="assets/img/logo.png" type="image/png" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto&display=swap" rel="stylesheet"/>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto&display=swap"
+    rel="stylesheet"/>
   <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
 
-  <!-- Hero -->
-  <header class="hero">
-    <div class="hero-content">
-      <h1>Турфирма «Мечта»</h1>
-      <p>Пешие походы • ПВД • Сплавы • Зимние приключения</p>
-      <a href="#services" class="btn-primary">Наши походы</a>
-    </div>
-  </header>
-
   <main>
-    <!-- О компании -->
-    <section id="about" class="card-wrapper">
-      <h2>О нас</h2>
-       <div class="card about-wrapper">
-         <img src="assets/img/logo.png"
-              alt="Логотип Турфирма Мечта"
-              class="about-logo">
-         <div class="about-text">
-           <p><strong>«Мечта»</strong> — ведущая турфирма по организации приключенческих походов по всей России. Уже более 10 лет мы воплощаем самые смелые туристические мечты: от лёгких однодневных выездов на выходные до многодневных марш-бросков по величественным горам Кавказа и Алтая. Наши специалисты тщательно прорабатывают каждый маршрут, чтобы вы познакомились с самыми живописными уголками страны, будь то уединённые лесные тропы Карелии или дикие склоны Урала.</p>
-           <p>Мы гордимся тем, что создаём не просто путешествия, а полноценные экспедиции с глубокой погружённостью в природу и местные традиции. В наших походах вы научитесь разводить костёр и устанавливать палатку на склоне, разберётесь в навигационных принципах и познаете основы выживания вдали от цивилизации. Для тех, кто хочет получить максимальный заряд эмоций, мы предлагаем комбинированные программы: пешие переходы с остановками у горных озёр, сплавы по быстрым рекам, ночёвки в гамаках под звёздным небом.</p>
-           <p>Каждое наше мероприятие сопровождается профессиональной поддержкой: опытные гиды с георгафическим образованием и инструктажем по безопасному поведению в любых условиях, а также современное снаряжение, проверенное в экстремальных испытаниях. Мы заботимся о деталях — от качественного питания и группового снаряжения до взаимодействия с местными жителями и экологической ответственности.</p>
-           <p>С нами вы не просто отдыхаете — вы становитесь частью дружной команды, получаете новые навыки, находите верных друзей и создаёте воспоминания на всю жизнь. <strong>«Мечта»</strong> — это ваша дверь в мир настоящих открытий и душевного единения с природой!</p>
-         </div>
-       </div>
-    </section>
-
-    <!-- Услуги / Форматы туров -->
+    <!-- Тестовые карточки с фильтрами -->
     <section id="services">
-      <h2>Наши направления</h2>
+      <h2>Тестовые карточки</h2>
 
-      <!-- Фильтры верхнего уровня -->
+      <!-- Основные фильтры -->
       <div class="filter-bar" id="main-filters">
         <button class="filter-item active" data-filter="all">Все направления</button>
         <button class="filter-item"      data-filter="pvd">ПВД</button>
         <button class="filter-item"      data-filter="big">Большие путешествия</button>
       </div>
-      
+
       <!-- Подфильтры для ПВД -->
       <div class="filter-bar subfilters" id="pvd-filters" style="display:none;">
         <button class="filter-item active" data-filter="allpvd">Все ПВД</button>
         <button class="filter-item"      data-filter="hike">Пеший</button>
         <button class="filter-item"      data-filter="raft">Сплав</button>
       </div>
-    <!--  <div class="grid">
 
-        <div class="service-card">
+      <!-- Контейнер карточек -->
+      <div class="grid" id="cards-container">
+
+        <!-- ПВД — Пеший -->
+        <div class="service-card" data-category="pvd" data-sub="hike">
           <img src="assets/img/icon-hiking.png" alt="Пешие походы">
           <div class="service-card-content">
-            <h3>Пешие походы</h3>
-            <p>Треккинг по тропам Карелии, Алтая и Кавказа.</p>
+            <h3>ПВД: Пеший №1</h3>
+            <p>Короткая однодневная прогулка в лесу.</p>
           </div>
         </div>
-
-        <div class="service-card">
-          <img src="assets/img/icon-pvd.png" alt="ПВД">
+        <div class="service-card" data-category="pvd" data-sub="hike">
+          <img src="assets/img/icon-hiking.png" alt="Пешие походы">
           <div class="service-card-content">
-            <h3>ПВД</h3>
-            <p>Короткие выезды по Московской и соседним областям.</p>
+            <h3>ПВД: Пеший №2</h3>
+            <p>Маршрут по берегу реки.</p>
+          </div>
+        </div>
+        <div class="service-card" data-category="pvd" data-sub="hike">
+          <img src="assets/img/icon-hiking.png" alt="Пешие походы">
+          <div class="service-card-content">
+            <h3>ПВД: Пеший №3</h3>
+            <p>Выходной поход по окрестностям.</p>
           </div>
         </div>
 
-        <div class="service-card">
+        <!-- ПВД — Сплав -->
+        <div class="service-card" data-category="pvd" data-sub="raft">
           <img src="assets/img/icon-rafting.png" alt="Сплавы">
           <div class="service-card-content">
-            <h3>Сплавы</h3>
-            <p>Рафтинг и каякинг по живописным рекам.</p>
+            <h3>ПВД: Сплав №1</h3>
+            <p>Рафтинг по местной реке.</p>
           </div>
         </div>
-
-        <div class="service-card">
-          <img src="assets/img/icon-winter.png" alt="Зимние походы">
+        <div class="service-card" data-category="pvd" data-sub="raft">
+          <img src="assets/img/icon-rafting.png" alt="Сплавы">
           <div class="service-card-content">
-            <h3>Зимние походы</h3>
-            <p>Лыжные и снегоступные туры по заснеженным просторам.</p>
+            <h3>ПВД: Сплав №2</h3>
+            <p>Каякинг в живописном каньоне.</p>
+          </div>
+        </div>
+        <div class="service-card" data-category="pvd" data-sub="raft">
+          <img src="assets/img/icon-rafting.png" alt="Сплавы">
+          <div class="service-card-content">
+            <h3>ПВД: Сплав №3</h3>
+            <p>Сплав выходного дня.</p>
           </div>
         </div>
 
-      </div> -->
-    </section>
+        <!-- Большие путешествия -->
+        <div class="service-card" data-category="big">
+          <img src="assets/img/icon-big.png" alt="Большие путешествия">
+          <div class="service-card-content">
+            <h3>Большое: По Кавказу</h3>
+            <p>10-дневный поход по горам.</p>
+          </div>
+        </div>
+        <div class="service-card" data-category="big">
+          <img src="assets/img/icon-big.png" alt="Большие путешествия">
+          <div class="service-card-content">
+            <h3>Большое: По Алтаю</h3>
+            <p>Маршрут с озёрами Шавлинскими.</p>
+          </div>
+        </div>
+        <div class="service-card" data-category="big">
+          <img src="assets/img/icon-big.png" alt="Большие путешествия">
+          <div class="service-card-content">
+            <h3>Большое: По Камчатке</h3>
+            <p>Экспедиция к вулканам.</p>
+          </div>
+        </div>
 
-    <!-- Контакты и форма бронирования -->
-    <section id="contact" class="card-wrapper">
-      <h2>Свяжитесь с нами</h2>
-      <div class="card">
-        <p>Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
-        <p>Email: <a href="mailto:info@mechta-tours.ru">info@mechta-tours.ru</a></p>
-        <form action="https://formspree.io/f/ВАШ_КОД" method="POST" class="contact-form">
-          <input type="text" name="name" placeholder="Ваше имя" required>
-          <input type="tel" name="phone" placeholder="Телефон" required>
-          <input type="email" name="email" placeholder="E-mail" required>
-          <textarea name="message" placeholder="Ваше сообщение" required></textarea>
-          <button type="submit" class="btn-primary">Отправить</button>
-        </form>
       </div>
     </section>
   </main>
 
   <footer>
-    &copy; Турфирма «Мечта», 2013-2025
+    &copy; Турфирма «Мечта», 2013–2025
   </footer>
 
   <script src="assets/js/main.js"></script>
