@@ -242,9 +242,8 @@ footer {
   color: #fff;
 }
 .has-dropdown .dropdown .filter-item.active {
-  background: var(--color-primary) !important;
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  outline: 2px solid #fff;
+  outline-offset: -2px;
 }
 .has-dropdown .dropdown .filter-item:hover {
   background: var(--color-primary);
