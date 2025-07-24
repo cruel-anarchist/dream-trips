@@ -28,7 +28,7 @@
              alt="Логотип Турфирма Мечта"
              class="about-logo">
         <div class="about-text">
-          <p><strong>«Мечта»</strong> — ведущая турфирма по организации приключенческих походов по всей России. Уже более 10 лет мы воплощаем самые смелые туристические мечты: от лёгких однодневных выездов на выходные до многодневных марш-бросков по величественным горам Кавказа и Алтая.</p>
+          <p><strong>«Мечта»</strong> — ведущая турфирма по организации приключенческих походов по всей России. Уже более 10 лет мы воплощаем самые смелые туристические мечты: от лёгких однодневных выездов на выходные до многодневных марш‑бросков по величественным горам Кавказа и Алтая.</p>
           <p>Мы гордимся тем, что создаём не просто путешествия, а полноценные экспедиции с глубокой погружённостью в природу и местные традиции. В наших походах вы научитесь разводить костёр и устанавливать палатку на склоне, разберётесь в навигационных принципах и познаете основы выживания вдали от цивилизации.</p>
           <p>Каждое наше мероприятие сопровождается профессиональной поддержкой: опытные гиды с географическим образованием, современное снаряжение и тщательное планирование маршрутов. Мы заботимся о деталях — от качественного питания до экологической ответственности.</p>
           <p>С нами вы не просто отдыхаете — вы становитесь частью дружной команды, получаете новые навыки, находите друзей и создаёте воспоминания на всю жизнь!</p>
@@ -48,7 +48,7 @@
         <div class="filter-item-wrapper has-dropdown">
           <button class="filter-item" data-filter="pvd">ПВД ▾</button>
           <!-- выпадающее подменю -->
-          <div class="dropdown subfilters" id="pvd-filters">
+          <div class="dropdown">
             <button class="filter-item active" data-filter="allpvd">Все ПВД</button>
             <button class="filter-item"       data-filter="hike">Пеший</button>
             <button class="filter-item"       data-filter="raft">Сплав</button>
@@ -59,7 +59,7 @@
         </div>
       </div>
 
-      <!-- Карточки -->
+      <!-- Контейнер для карточек (заполняется из events-cards.html) -->
       <div class="grid" id="cards-container"></div>
     </section>
 
@@ -67,12 +67,12 @@
     <section id="contact" class="card-wrapper">
       <h2>Свяжитесь с нами</h2>
       <div class="card">
-        <p>Телефон: <a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+        <p>Телефон: <a href="tel:+74951234567">+7 (495) 123‑45‑67</a></p>
         <p>Email: <a href="mailto:info@mechta-tours.ru">info@mechta-tours.ru</a></p>
         <form action="https://formspree.io/f/ВАШ_КОД" method="POST" class="contact-form">
           <input type="text" name="name" placeholder="Ваше имя" required>
-          <input type="tel" name="phone" placeholder="Телефон" required>
-          <input type="email" name="email" placeholder="E-mail" required>
+          <input type="tel"  name="phone" placeholder="Телефон" required>
+          <input type="email"name="email" placeholder="E‑mail"   required>
           <textarea name="message" placeholder="Ваше сообщение" required></textarea>
           <button type="submit" class="btn-primary">Отправить</button>
         </form>
