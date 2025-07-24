@@ -69,16 +69,7 @@ h2 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* == Сетка услуг == */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
+/* == «О нас» == */
 .about-wrapper {
   display: flex;
   align-items: flex-start;
@@ -96,6 +87,16 @@ h2 {
   flex: 1;
   font-size: 1rem;
   line-height: 1.5;
+}
+
+/* == Сетка карточек == */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
 .service-card {
@@ -134,7 +135,8 @@ h2 {
   gap: 1rem;
   margin-top: 1rem;
 }
-.contact-form input, .contact-form textarea {
+.contact-form input,
+.contact-form textarea {
   width: 100%;
   padding: .75rem;
   border: 1px solid #ccc;
@@ -188,20 +190,23 @@ footer {
   justify-content: center;
   background: var(--color-bg);
   border-radius: 2rem;
-  overflow: hidden;
+  /* теперь видим выпадашку */
+  overflow: visible;
   margin: 2rem auto;
   max-width: 800px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-/* обёртка каждого пункта (для равных ширин + dropdown) */
 .filter-item-wrapper {
   position: relative;
   flex: 1;
   display: flex;
 }
 
-/* кнопка-фильтр растягивается на всю ширину */
+.filter-item-wrapper + .filter-item-wrapper {
+  border-left: 1px solid rgba(255,255,255,0.3);
+}
+
 .filter-bar .filter-item {
   flex: 1;
   padding: .75rem 1rem;
@@ -213,17 +218,10 @@ footer {
   transition: box-shadow .2s;
 }
 
-/* разделитель между «колонками» */
-.filter-item-wrapper + .filter-item-wrapper {
-  border-left: 1px solid rgba(255,255,255,0.3);
-}
-
-/* активный фильтр */
 .filter-bar .filter-item.active {
   background: var(--color-primary);
 }
 
-/* hover — только тень */
 .filter-bar .filter-item:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
@@ -237,21 +235,17 @@ footer {
   border-radius: 0 0 2rem 2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   flex-direction: column;
-  overflow: hidden;
+  z-index: 10;
 }
 
-/* показать при наведении */
 .has-dropdown:hover .dropdown {
   display: flex;
 }
 
-/* кнопки внутри dropdown */
 .has-dropdown .dropdown .filter-item {
-  background: var(--color-accent);
   border-top: 1px solid rgba(255,255,255,0.3);
+  background: var(--color-accent);
 }
-
-/* активный внутри dropdown */
 .has-dropdown .dropdown .filter-item.active {
   background: var(--color-primary);
 }
