@@ -123,6 +123,7 @@ h2 {
 .service-card-content h3 {
   font-family: var(--font-heading);
   margin: 0 0 .5rem;
+  text-align: center;
 }
 .service-card-content p {
   font-size: .95rem;
