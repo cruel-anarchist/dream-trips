@@ -1,25 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const mainBtns = document.querySelectorAll('#main-filters > .filter-item-wrapper > .filter-item');
-  const subBtns  = document.querySelectorAll('#pvd-filters .filter-item');
+  const mainBtns       = document.querySelectorAll('#main-filters > .filter-item-wrapper > .filter-item');
+  const subBtns        = document.querySelectorAll('.has-dropdown .dropdown .filter-item');
   const cardsContainer = document.getElementById('cards-container');
 
-  // 1) Подтягиваем карточки из external файла
+  // 1) Загрузить карточки из внешнего файла
   async function loadCards() {
     const resp = await fetch('events-cards.html');
     const html = await resp.text();
-    // помещаем внутрь контейнера
     cardsContainer.innerHTML = html;
-    initFiltering(); // привязываем фильтры
+    initFiltering();
   }
 
-  // 2) Инициализация логики фильтрации уже загруженных .service-card
+  // 2) Повесить логику фильтра
   function initFiltering() {
     const cards = document.querySelectorAll('#cards-container .service-card');
+
+    // показывает все карточки
     function showAll() {
       cards.forEach(c => c.style.display = 'flex');
     }
+
+    // фильтрует по data-type
     function filterCards(filter) {
-      if (filter === 'all') return showAll();
+      if (filter === 'all') {
+        return showAll();
+      }
       cards.forEach(card => {
         const types = card.dataset.type.split(' ');
         card.style.display = types.includes(filter) ? 'flex' : 'none';
@@ -32,10 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
         mainBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
-        // если это ПВД — показываем dropdown и показываем allpvd
         const filter = btn.dataset.filter;
         if (filter === 'pvd') {
-          // активируем в субфильтрах first
+          // активируем первый subBtn («Все ПВД»)
           subBtns.forEach(b => b.classList.remove('active'));
           subBtns[0].classList.add('active');
           filterCards('allpvd');
@@ -45,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // кнопки субфильтров
+    // sub‑кнопки в dropdown
     subBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         subBtns.forEach(b => b.classList.remove('active'));
