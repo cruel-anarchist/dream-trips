@@ -216,6 +216,7 @@ footer {
 }
 .filter-bar .filter-item.active {
   background: var(--color-primary);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 .filter-bar .filter-item:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
@@ -243,6 +244,7 @@ footer {
 .has-dropdown .dropdown .filter-item.active {
   background: var(--color-primary) !important;
   color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 .has-dropdown .dropdown .filter-item:hover {
   background: var(--color-primary);
