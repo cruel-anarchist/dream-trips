@@ -217,6 +217,7 @@ footer {
   max-width: 800px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
 .filter-bar .filter-item {
   flex: 1;
   padding: .75rem 1rem;
@@ -225,16 +226,23 @@ footer {
   color: #fff;
   cursor: pointer;
   font-family: var(--font-heading);
-  transition: background .2s;
+  /* перенёс сюда переходы под карточки */
+  transition: transform .2s, box-shadow .2s;
 }
+
 .filter-bar .filter-item + .filter-item {
   border-left: 1px solid rgba(255,255,255,0.3);
 }
+
 .filter-bar .filter-item.active {
   background: var(--color-primary);
 }
+
+/* hover-эффект как у карточек */
 .filter-bar .filter-item:hover {
-  background: darken(var(--color-primary), 5%);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  /* не меняем фон */
 }
 
 /* Отступ между основными и под‑фильтрами */
