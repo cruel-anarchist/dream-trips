@@ -39,6 +39,20 @@
     <!-- Услуги / Форматы туров -->
     <section id="services">
       <h2>Наши направления</h2>
+
+      <!-- Фильтры верхнего уровня -->
+      <div class="filter-bar" id="main-filters">
+        <button class="filter-item active" data-filter="all">Все направления</button>
+        <button class="filter-item"      data-filter="pvd">ПВД</button>
+        <button class="filter-item"      data-filter="big">Большие путешествия</button>
+      </div>
+      
+      <!-- Подфильтры для ПВД -->
+      <div class="filter-bar subfilters" id="pvd-filters" style="display:none;">
+        <button class="filter-item active" data-filter="hike">Пеший</button>
+        <button class="filter-item"      data-filter="raft">Сплав</button>
+        <button class="filter-item"      data-filter="other">Другой</button>
+      </div>
       <div class="grid">
 
         <div class="service-card">
