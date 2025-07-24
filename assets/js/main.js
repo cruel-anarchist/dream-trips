@@ -1,46 +1,46 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+  // 1. Загрузка карточек
+  const resp = await fetch('events-cards.html');
+  const html  = await resp.text();
+  const tmp   = document.createElement('div');
+  tmp.innerHTML = html;
+  // Берём именно внутренности #cards-container
+  const cardsHtml = tmp.querySelector('#cards-container').innerHTML;
+  document.getElementById('cards-container').innerHTML = cardsHtml;
+
+  // 2. Инициализируем фильтры
+  initFilters();
+});
+
+function initFilters() {
   const mainBtns = document.querySelectorAll('#main-filters .filter-item');
   const subBtns  = document.querySelectorAll('#pvd-filters .filter-item');
   const subbar   = document.getElementById('pvd-filters');
   const cards    = document.querySelectorAll('#cards-container .service-card');
 
-  function clearActive(btns) {
-    btns.forEach(b => b.classList.remove('active'));
-  }
-
-  function filterCards(category, sub = null) {
+  function filterCards(filter) {
     cards.forEach(card => {
+      // категория и (для PVD) субкатегория лежат в data-*
       const cat = card.dataset.category;
-      const sb  = card.dataset.sub || null;
-      let visible = false;
-
-      if (category === 'all') {
-        visible = true;
-      } else if (category === 'big') {
-        visible = cat === 'big';
-      } else if (category === 'pvd') {
-        if (!sub || sub === 'allpvd') {
-          visible = cat === 'pvd';
-        } else {
-          visible = cat === 'pvd' && sb === sub;
-        }
-      }
-
-      card.style.display = visible ? 'flex' : 'none';
+      const sub = card.dataset.sub; 
+      let ok = false;
+      if (filter === 'all') ok = true;
+      else if (filter === 'pvd') ok = (cat === 'pvd');
+      else if (filter === 'big') ok = (cat === 'big');
+      else if (filter === 'allpvd') ok = (cat === 'pvd');
+      else ok = (sub === filter);
+      card.style.display = ok ? 'flex' : 'none';
     });
   }
 
-  // Основные кнопки
+  // основная панель
   mainBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      clearActive(mainBtns);
+      mainBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
       if (btn.dataset.filter === 'pvd') {
         subbar.style.display = 'flex';
-        clearActive(subBtns);
-        subBtns[0].classList.add('active');
-        filterCards('pvd', 'allpvd');
+        filterCards('allpvd');
       } else {
         subbar.style.display = 'none';
         filterCards(btn.dataset.filter);
@@ -48,15 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Подфильтры ПВД
+  // под‑панель PVD
   subBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      clearActive(subBtns);
+      subBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      filterCards('pvd', btn.dataset.filter);
+      filterCards(btn.dataset.filter);
     });
   });
 
-  // По умолчанию — всё
+  // показываем всё по умолчанию
   filterCards('all');
-});
+}
