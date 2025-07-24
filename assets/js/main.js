@@ -55,8 +55,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Подфильтры
     subBtns.forEach(btn => {
       btn.addEventListener('click', () => {
+        // 1) Убираем выделение со всех суб‑кнопок и выделяем нажатую
         subBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+      
+        // 2) Убедимся, что в главном меню "ПВД" тоже подсвечен
+        mainBtns.forEach(b => {
+          if (b.dataset.filter === 'pvd') {
+            b.classList.add('active');
+          } else {
+            // остальным главным пунктам сбрасываем active, если они вдруг были
+            b.classList.remove('active');
+          }
+        });
+      
+        // 3) Применяем фильтр под‑пункта
         filterCards(btn.dataset.filter);
       });
     });
