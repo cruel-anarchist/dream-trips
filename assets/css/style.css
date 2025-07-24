@@ -226,7 +226,7 @@ footer {
   color: #fff;
   cursor: pointer;
   font-family: var(--font-heading);
-  /* перенёс сюда переходы под карточки */
+  /* переход для трансформаций и теней */
   transition: transform .2s, box-shadow .2s;
 }
 
@@ -234,15 +234,22 @@ footer {
   border-left: 1px solid rgba(255,255,255,0.3);
 }
 
+/* активная кнопка (можете заменить цвет) */
 .filter-bar .filter-item.active {
   background: var(--color-primary);
+  color: #fff;
 }
 
-/* hover-эффект как у карточек */
+/* hover‑эффект «подъёма» */
 .filter-bar .filter-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  /* не меняем фон */
+}
+
+/* если наведены на активную, тоже «поднимаем» */
+.filter-bar .filter-item.active:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 /* Отступ между основными и под‑фильтрами */
