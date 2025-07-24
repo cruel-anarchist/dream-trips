@@ -40,18 +40,23 @@
     <section id="services">
       <h2>Наши направления</h2>
 
-      <!-- Основные фильтры -->
+      <!-- Фильтры верхнего уровня -->
       <div class="filter-bar" id="main-filters">
-        <button class="filter-item active" data-filter="all">Все направления</button>
-        <button class="filter-item"      data-filter="pvd">ПВД</button>
-        <button class="filter-item"      data-filter="big">Большие путешествия</button>
-      </div>
-
-      <!-- Подфильтры для ПВД -->
-      <div class="filter-bar subfilters" id="pvd-filters" style="display:none;">
-        <button class="filter-item active" data-filter="allpvd">Все ПВД</button>
-        <button class="filter-item"      data-filter="hike">Пеший</button>
-        <button class="filter-item"      data-filter="raft">Сплав</button>
+        <div class="filter-item-wrapper">
+          <button class="filter-item active" data-filter="all">Все направления</button>
+        </div>
+        <div class="filter-item-wrapper has-dropdown">
+          <button class="filter-item" data-filter="pvd">ПВД ▾</button>
+          <!-- выпадающее подменю -->
+          <div class="dropdown subfilters" id="pvd-filters">
+            <button class="filter-item active" data-filter="allpvd">Все ПВД</button>
+            <button class="filter-item"       data-filter="hike">Пеший</button>
+            <button class="filter-item"       data-filter="raft">Сплав</button>
+          </div>
+        </div>
+        <div class="filter-item-wrapper">
+          <button class="filter-item" data-filter="big">Большие путешествия</button>
+        </div>
       </div>
 
       <!-- Карточки -->
