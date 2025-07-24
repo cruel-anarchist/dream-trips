@@ -135,8 +135,7 @@ h2 {
   gap: 1rem;
   margin-top: 1rem;
 }
-.contact-form input,
-.contact-form textarea {
+.contact-form input, .contact-form textarea {
   width: 100%;
   padding: .75rem;
   border: 1px solid #ccc;
@@ -196,17 +195,14 @@ footer {
   max-width: 800px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-
 .filter-item-wrapper {
   position: relative;
   flex: 1;
   display: flex;
 }
-
 .filter-item-wrapper + .filter-item-wrapper {
   border-left: 1px solid rgba(255,255,255,0.3);
 }
-
 .filter-bar .filter-item {
   flex: 1;
   padding: .75rem 1rem;
@@ -217,11 +213,9 @@ footer {
   font-family: var(--font-heading);
   transition: box-shadow .2s;
 }
-
 .filter-bar .filter-item.active {
   background: var(--color-primary);
 }
-
 .filter-bar .filter-item:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
@@ -237,11 +231,9 @@ footer {
   flex-direction: column;
   z-index: 10;
 }
-
 .has-dropdown:hover .dropdown {
   display: flex;
 }
-
 .has-dropdown .dropdown .filter-item {
   border-top: 1px solid rgba(255,255,255,0.3);
   background: var(--color-accent);
@@ -259,7 +251,6 @@ footer {
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
-
 .social-link {
   display: inline-flex;
   width: 50px;
@@ -270,24 +261,32 @@ footer {
   background: #fff;
   transition: box-shadow .2s, transform .2s;
 }
-
 .social-link:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
+.social-link.vk { background: #1876d2; }
+.social-link.tg { background: #29b6f6; }
+.social-link svg { width: 60%; height: 60%; fill: #fff; }
 
-/* (опционально) цветной фон под каждый сервис */
-.social-link.vk {
-  background: #1876d2;
+/* ====================
+   Равные высоты карточек
+   ==================== */
+.grid {
+  align-items: start; /* ячейки выравниваются по верху */
 }
-.social-link.tg {
-  background: #29b6f6;
+.service-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
-
-/* svg внутри займёт всю область иконки */
-.social-link svg {
-  width: 60%;
-  height: 60%;
-  fill: #fff;
+.service-card-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
 }
-
+.service-card-content p {
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
