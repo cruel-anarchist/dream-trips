@@ -201,6 +201,14 @@ footer {
   flex: 1;
   display: flex;
 }
+.filter-item-wrapper:first-child .filter-item {
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
+}
+.filter-item-wrapper:last-child .filter-item {
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+}
 .filter-item-wrapper + .filter-item-wrapper {
   border-left: 1px solid rgba(255,255,255,0.3);
 }
