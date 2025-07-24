@@ -1,69 +1,137 @@
-<!-- только содержимое контейнера #cards-container -->
-<!-- Пешие ПВД (Московский регион) -->
-<div class="service-card" data-type="all pvd allpvd hike">
-  <img src="assets/img/icon-hiking.png" alt="Пеший поход">
-  <div class="service-card-content">
-    <h3>ПВД Пеший: Озёра Подмосковья</h3>
-    <p>Пеший маршрут по живописным озёрам Московской области.</p>
-  </div>
-</div>
-<div class="service-card" data-type="all pvd allpvd hike">
-  <img src="assets/img/icon-hiking.png" alt="Пеший поход">
-  <div class="service-card-content">
-    <h3>ПВД Пеший: Лосиный Остров</h3>
-    <p>Пешая экскурсия по национальному парку «Лосиный Остров».</p>
-  </div>
-</div>
-<div class="service-card" data-type="all pvd allpvd hike">
-  <img src="assets/img/icon-hiking.png" alt="Пеший поход">
-  <div class="service-card-content">
-    <h3>ПВД Пеший: Канал имени Москвы</h3>
-    <p>Маршрут вдоль берегов Канала имени Москвы.</p>
-  </div>
-</div>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Детали маршрута</title>
 
-<!-- Сплавы ПВД (Московский регион) -->
-<div class="service-card" data-type="all pvd allpvd raft">
-  <img src="assets/img/icon-rafting.png" alt="Сплав">
-  <div class="service-card-content">
-    <h3>ПВД Сплав: Река Клязьма</h3>
-    <p>Лёгкий сплав по реке Клязьма для начинающих.</p>
-  </div>
-</div>
-<div class="service-card" data-type="all pvd allpvd raft">
-  <img src="assets/img/icon-rafting.png" alt="Сплав">
-  <div class="service-card-content">
-    <h3>ПВД Сплав: Река Москва</h3>
-    <p>Сплав на байдарках по реке Москва.</p>
-  </div>
-</div>
-<div class="service-card" data-type="all pvd allpvd raft">
-  <img src="assets/img/icon-rafting.png" alt="Сплав">
-  <div class="service-card-content">
-    <h3>ПВД Сплав: Река Яуза</h3>
-    <p>Короткий сплав по речке Яуза недалеко от города.</p>
-  </div>
-</div>
+  <!-- Общие стили сайта -->
+  <link rel="stylesheet" href="assets/css/style.css" />
 
-<!-- Большие путешествия -->
-<div class="service-card" data-type="all big">
-  <img src="assets/img/icon-big.png" alt="Большое путешествие">
-  <div class="service-card-content">
-    <h3>Камчатка</h3>
-    <p>Экспедиция по вулканам и горячим источникам Камчатки.</p>
+  <!-- Локальные стили только для detail‑карточки -->
+  <style>
+    :root {
+      --color-primary: #004080;
+      --color-accent:  #ff6600;
+      --color-bg:      #f5f5f5;
+      --font-heading:  'Montserrat', sans-serif;
+      --font-body:     'Roboto', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-bg);
+      margin: 2rem;
+      color: #111;
+    }
+
+    .card-detail {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+
+    .card-detail img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .card-detail .card-body {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .card-detail .card-body h3 {
+      font-family: var(--font-heading);
+      font-size: 1.75rem;
+      margin: 1rem 0;
+      color: var(--color-accent);
+    }
+
+    .card-detail .card-body .dates,
+    .card-detail .card-body .availability {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-detail .card-body .dates {
+      font-weight: bold;
+    }
+
+    .card-detail .card-body .program {
+      margin: 1rem 0;
+      text-align: left;
+    }
+    .card-detail .card-body .program ul {
+      list-style: none;
+      padding: 0;
+    }
+    .card-detail .card-body .program li {
+      margin: 0.5rem 0;
+      position: relative;
+      padding-left: 1.2rem;
+      line-height: 1.4;
+    }
+    .card-detail .card-body .program li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      color: var(--color-primary);
+    }
+
+    .card-detail .card-body .footer {
+      margin-top: 1rem;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+    .card-detail .card-body .footer span {
+      display: block;
+      margin: 0.3rem 0;
+    }
+    .card-detail .card-body .footer .price {
+      color: var(--color-accent);
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card-detail">
+    <img src="assets/img/event-photo.jpg" alt="Вокруг Толбачика #1">
+
+    <div class="card-body">
+      <div class="dates">5–18 июля</div>
+      <div class="availability">Свободных мест в группе 8</div>
+      <div class="dates">19 июля – 1 августа</div>
+      <div class="availability">Свободных мест в группе 9</div>
+
+      <h3>Вокруг Толбачика #1</h3>
+
+      <p>Пеший маршрут под рюкзаком с внеземными лунными пейзажами и насыщенной программой.<br>
+         Идём с Юга на Север (от Клешни до Копыта)</p>
+
+      <div class="program">
+        <strong>В программе:</strong>
+        <ul>
+          <li>Лавовые потоки, горячие трещины и огнедышащие пещеры;</li>
+          <li>Восхождение на вулканы: Плоский Толбачик (3140 м) и плече вулкана Овальная Зимина (2000 м);</li>
+          <li>Тихий океан и горячие источники;</li>
+          <li>Сплав по реке Быстрая в Эссо;</li>
+          <li>Краеведческий музей и бассейн в Эссо.</li>
+        </ul>
+      </div>
+
+      <div class="footer">
+        <span>Километраж: <strong>101 км</strong></span>
+        <span>Сложность: <strong>средняя, (3/5)</strong></span>
+        <span>Стоимость: <strong class="price">94 000 ₽</strong></span>
+      </div>
+    </div>
   </div>
-</div>
-<div class="service-card" data-type="all big">
-  <img src="assets/img/icon-big.png" alt="Большое путешествие">
-  <div class="service-card-content">
-    <h3>Байкал</h3>
-    <p>Комбинированный тур пешком и на водном транспорте вокруг Байкала.</p>
-  </div>
-</div>
-<div class="service-card" data-type="all big">
-  <img src="assets/img/icon-big.png" alt="Большое путешествие">
-  <div class="service-card-content">
-    <h3>Выборг</h3>
-    <p>Культурно‑историческое путешествие в средневековый Выборг.</p>
-  </div>
-</div>
+
+</body>
+</html>
