@@ -226,8 +226,7 @@ footer {
   color: #fff;
   cursor: pointer;
   font-family: var(--font-heading);
-  /* теперь тень без движения */
-  transition: box-shadow .2s;
+  transition: background .2s;
 }
 
 .filter-bar .filter-item + .filter-item {
@@ -236,13 +235,13 @@ footer {
 
 /* активная кнопка */
 .filter-bar .filter-item.active {
-  background: var(--color-primary);
+  background: var(--color-primary); /* #004080 */
   color: #fff;
 }
 
-/* hover‑эффект: только тень */
+/* при наведении */
 .filter-bar .filter-item:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  background: #003366;
 }
 
 /* Отступ между основными и под‑фильтрами */
