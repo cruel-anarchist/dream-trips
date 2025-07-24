@@ -2,23 +2,45 @@ document.addEventListener('DOMContentLoaded', () => {
   const mainBtns = document.querySelectorAll('#main-filters .filter-item');
   const subBtns  = document.querySelectorAll('#pvd-filters .filter-item');
   const subbar   = document.getElementById('pvd-filters');
-  const cards    = document.querySelectorAll('.service-card');
+  const cards    = document.querySelectorAll('#cards-container .service-card');
 
-  function filterCards(filter) {
+  function clearActive(btns) {
+    btns.forEach(b => b.classList.remove('active'));
+  }
+
+  function filterCards(category, sub = null) {
     cards.forEach(card => {
-      const types = card.dataset.type.split(' ');
-      card.style.display = types.includes(filter) ? 'flex' : 'none';
+      const cat = card.dataset.category;
+      const sb  = card.dataset.sub || null;
+      let visible = false;
+
+      if (category === 'all') {
+        visible = true;
+      } else if (category === 'big') {
+        visible = cat === 'big';
+      } else if (category === 'pvd') {
+        if (!sub || sub === 'allpvd') {
+          visible = cat === 'pvd';
+        } else {
+          visible = cat === 'pvd' && sb === sub;
+        }
+      }
+
+      card.style.display = visible ? 'flex' : 'none';
     });
   }
 
+  // Основные кнопки
   mainBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      mainBtns.forEach(b => b.classList.remove('active'));
+      clearActive(mainBtns);
       btn.classList.add('active');
 
       if (btn.dataset.filter === 'pvd') {
         subbar.style.display = 'flex';
-        filterCards(subBtns[0].dataset.filter);
+        clearActive(subBtns);
+        subBtns[0].classList.add('active');
+        filterCards('pvd', 'allpvd');
       } else {
         subbar.style.display = 'none';
         filterCards(btn.dataset.filter);
@@ -26,14 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Подфильтры ПВД
   subBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      subBtns.forEach(b => b.classList.remove('active'));
+      clearActive(subBtns);
       btn.classList.add('active');
-      filterCards(btn.dataset.filter);
+      filterCards('pvd', btn.dataset.filter);
     });
   });
 
-  // Изначальный показ — все
+  // По умолчанию — всё
   filterCards('all');
 });
