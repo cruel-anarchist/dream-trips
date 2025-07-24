@@ -202,12 +202,12 @@ footer {
   display: flex;
 }
 .filter-item-wrapper:first-child .filter-item {
-  border-top-left-radius: 2rem;
-  border-bottom-left-radius: 2rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 .filter-item-wrapper:last-child .filter-item {
-  border-top-right-radius: 2rem;
-  border-bottom-right-radius: 2rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 .filter-item-wrapper + .filter-item-wrapper {
   border-left: 1px solid rgba(255,255,255,0.3);
