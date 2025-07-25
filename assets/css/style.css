@@ -25,24 +25,22 @@ h2 {
 
 /* Секция категорий */
 .category-section {
-  margin: 2rem auto;
   max-width: 900px;
+  margin: 2rem auto;
 }
-.category-title {
+.category-section h3 {
   font-family: var(--font-heading);
   font-size: 1.25rem;
   color: var(--color-primary);
   text-align: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
-
-/* Обёртка Swiper внутри каждой категории */
 .category-swiper .swiper-wrapper {
   display: flex !important;
   flex-wrap: nowrap !important;
 }
 .category-swiper .swiper-slide {
-  flex: 0 0 calc((100% - 32px) / 3) !important;
+  flex: 0 0 calc((100% - 16px*2) / 3) !important;
   margin-right: 16px;
 }
 .category-swiper .swiper-slide:nth-child(3n) {
