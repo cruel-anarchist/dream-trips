@@ -5,16 +5,16 @@ document.addEventListener('DOMContentLoaded', () => {
   let swiper;
 
   async function loadCards() {
-    // 1) Подгрузить шаблон
-    const tmplResp = await fetch('events-cards.html');
+    // 1) Подгружаем шаблон из корня
+    const tmplResp = await fetch('../events-cards.html');
     const tmplHtml = await tmplResp.text();
     const tmpDiv   = document.createElement('div');
     tmpDiv.innerHTML = tmplHtml;
     const template = tmpDiv.querySelector('#event-template');
     document.body.appendChild(template);
 
-    // 2) Подгрузить данные
-    const dataResp = await fetch('events.json');
+    // 2) Подгружаем данные из корня
+    const dataResp = await fetch('../events.json');
     const events   = await dataResp.json();
 
     container.innerHTML = '';
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (evt.date) dateEl.innerHTML = evt.date;
       else dateEl.remove();
 
-      // изображение
+      // картинка
       const img = card.querySelector('img');
       img.src = evt.img;
       img.alt = evt.alt;
@@ -46,12 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       } else progEl.remove();
 
-      // мета
+      // мета (км, уровень, цена)
       const metaEl = card.querySelector('.trip-meta');
       const parts = [];
       if (evt.km)    parts.push(`Километраж: <b>${evt.km}</b>`);
       if (evt.level) parts.push(`Сложность: <b>${evt.level}</b>`);
-      if (evt.price) parts.push(`Стоимость: <span class=\"trip-price\">${evt.price}</span>`);
+      if (evt.price) parts.push(`Стоимость: <span class="trip-price">${evt.price}</span>`);
       if (parts.length) metaEl.innerHTML = parts.join('<br>');
       else metaEl.remove();
 
@@ -118,9 +118,10 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', () => {
         subBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        mainBtns.forEach(b => b.dataset.filter === 'pvd'
-          ? b.classList.add('active')
-          : b.classList.remove('active')
+        mainBtns.forEach(b =>
+          b.dataset.filter === 'pvd'
+            ? b.classList.add('active')
+            : b.classList.remove('active')
         );
         filterCards(btn.dataset.filter);
       });
