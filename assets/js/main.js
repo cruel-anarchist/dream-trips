@@ -11,45 +11,35 @@ document.addEventListener('DOMContentLoaded', () => {
     initFiltering();
   }
 
-  // 2) Настроить фильтрацию и карусель
+  // 2) Настроить фильтрацию
   function initFiltering() {
-    // Функция, которая каждый раз берёт актуальные карточки из DOM
-    const getCards = () =>
-      Array.from(document.querySelectorAll(
-        '#cards-container .service-card, #cards-container .trip-card'
-      ));
-
-    // Если >3 видимых — включаем режим «карусели»
-    function updateCarousel() {
-      const visible = getCards().filter(c => c.style.display !== 'none').length;
-      cardsContainer.classList.toggle('carousel', visible > 3);
-    }
+    const cards = document.querySelectorAll('#cards-container .service-card, #cards-container .trip-card');
 
     function showAll() {
-      getCards().forEach(c => c.style.display = '');
-      updateCarousel();
+      cards.forEach(c => c.style.display = '');
     }
 
     function filterCards(filter) {
       if (filter === 'all') {
         return showAll();
       }
-      getCards().forEach(card => {
+      cards.forEach(card => {
         const types = card.dataset.type.split(' ');
         card.style.display = types.includes(filter) ? '' : 'none';
       });
-      updateCarousel();
     }
 
-    // === обработчики главных кнопок ===
+    // Главные фильтры
     mainBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const f = btn.dataset.filter;
+
+        // подсветка главного меню
         mainBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
         if (f === 'pvd') {
-          // показываем «Все ПВД»
+          // при выборе ПВД — активируем «Все ПВД» в подменю
           subBtns.forEach(b => b.classList.remove('active'));
           subBtns[0].classList.add('active');
           filterCards('allpvd');
@@ -59,21 +49,30 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // === обработчики подменю ПВД ===
+    // Подфильтры
     subBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const f = btn.dataset.filter;
+
+        // подсветка суб‑меню
         subBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        // держим «ПВД» активным в главном меню
-        mainBtns.forEach(b =>
-          b.dataset.filter === 'pvd' ? b.classList.add('active') : b.classList.remove('active')
-        );
+
+        // **и** обязательно оставить “ПВД” в главном меню активным
+        mainBtns.forEach(b => {
+          if (b.dataset.filter === 'pvd') {
+            b.classList.add('active');
+          } else {
+            b.classList.remove('active');
+          }
+        });
+
+        // фильтруем по суб‑меню
         filterCards(f);
       });
     });
 
-    // старт
+    // стартовое состояние — показать всё
     showAll();
   }
 
