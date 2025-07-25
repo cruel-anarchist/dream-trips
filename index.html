@@ -38,10 +38,10 @@
     </section>
 
     <!-- Формат туров -->
-    <section id="services">
+<section id="services" class="card-wrapper">
       <h2>Наши направления</h2>
 
-      <!-- Панель фильтров -->
+      <!-- Фильтры -->
       <div class="filter-bar" id="main-filters">
         <div class="filter-item-wrapper">
           <button class="filter-item active" data-filter="all">Все направления</button>
@@ -49,9 +49,9 @@
         <div class="filter-item-wrapper has-dropdown">
           <button class="filter-item" data-filter="pvd">ПВД ▾</button>
           <div class="dropdown">
-            <button class="filter-item"       data-filter="allpvd">Все ПВД</button>
-            <button class="filter-item"       data-filter="hike">Пеший</button>
-            <button class="filter-item"       data-filter="raft">Сплав</button>
+            <button class="filter-item" data-filter="allpvd">Все ПВД</button>
+            <button class="filter-item" data-filter="hike">Пеший</button>
+            <button class="filter-item" data-filter="raft">Сплав</button>
           </div>
         </div>
         <div class="filter-item-wrapper">
@@ -59,14 +59,42 @@
         </div>
       </div>
 
-      <!-- Слайдер карточек -->
-      <div class="swiper all-events-swiper">
-        <div class="swiper-wrapper" id="cards-container">
-          <!-- карточки подгружаются из events-cards.html -->
+      <!-- Категории -->
+      <div class="all-categories">
+
+        <!-- Пеший ПВД -->
+        <div class="category-section" data-group="hike">
+          <h3 class="category-title">ПВД Пеший</h3>
+          <div class="swiper category-swiper" data-group="hike">
+            <div class="swiper-wrapper"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+          </div>
         </div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-        <div class="swiper-pagination"></div>
+
+        <!-- Сплав ПВД -->
+        <div class="category-section" data-group="raft">
+          <h3 class="category-title">ПВД Сплав</h3>
+          <div class="swiper category-swiper" data-group="raft">
+            <div class="swiper-wrapper"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+
+        <!-- Большие путешествия -->
+        <div class="category-section" data-group="big">
+          <h3 class="category-title">Большие путешествия</h3>
+          <div class="swiper category-swiper" data-group="big">
+            <div class="swiper-wrapper"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-pagination"></div>
+          </div>
+        </div>
+
       </div>
     </section>
 
