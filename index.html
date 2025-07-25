@@ -6,6 +6,7 @@
   <title>Турфирма «Мечта»</title>
   <link rel="icon" href="assets/img/logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/swiper@9/swiper-bundle.min.css"/>
   <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
@@ -58,8 +59,15 @@
         </div>
       </div>
 
-      <!-- Контейнер карточек -->
-      <div class="grid" id="cards-container"></div>
+      <!-- Слайдер карточек -->
+      <div class="swiper all-events-swiper">
+        <div class="swiper-wrapper" id="cards-container">
+          <!-- карточки подгружаются из events-cards.html -->
+        </div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-pagination"></div>
+      </div>
     </section>
 
     <!-- Контакты и форма -->
@@ -103,6 +111,7 @@
     &copy; Турфирма «Мечта», 2013–2025
   </footer>
 
+  <script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
