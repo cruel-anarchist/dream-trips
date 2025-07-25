@@ -1,104 +1,14 @@
-<!-- Только содержимое контейнера #cards-container -->
+<template id="event-template">
+  <div class="trip-card" data-type="">
+    <img class="trip-card-img" src="" alt="">
+    <div class="trip-card-body">
+      <p class="trip-date"></p>
+      <h3 class="trip-title"></h3>
+      <p class="trip-desc"></p>
+      <ul class="trip-program"></ul>
+      <p class="trip-meta"></p>
+    </div>
+  </div>
+</template>
 
-<!-- Пешие ПВД (Московский регион) -->
-<div class="trip-card" data-type="all pvd allpvd hike">
-  <img src="assets/img/icon-hiking.png" alt="Пеший поход" class="trip-card-img">
-  <div class="trip-card-body">
-    <h3 class="trip-title">ПВД Пеший: Озёра Подмосковья</h3>
-    <p class="trip-desc">Пеший маршрут по живописным озёрам Московской области.</p>
-  </div>
-</div>
-<div class="trip-card" data-type="all pvd allpvd hike">
-  <img src="assets/img/icon-hiking.png" alt="Пеший поход" class="trip-card-img">
-  <div class="trip-card-body">
-    <h3 class="trip-title">ПВД Пеший: Лосиный Остров</h3>
-    <p class="trip-desc">Пешая экскурсия по национальному парку «Лосиный Остров».</p>
-  </div>
-</div>
-
-<div class="trip-card" data-type="all pvd allpvd hike">
-  <img src="assets/img/icon-hiking.png" alt="Пеший поход" class="trip-card-img">
-  <div class="trip-card-body">
-    <h3 class="trip-title">ПВД Пеший: Канал имени Москвы</h3>
-    <p class="trip-desc">Маршрут вдоль берегов Канала имени Москвы.</p>
-  </div>
-</div>
-
-<!-- Сплавы ПВД (Московский регион) -->
-<div class="trip-card" data-type="all pvd allpvd raft">
-  <img src="assets/img/icon-rafting.png" alt="Сплав" class="trip-card-img">
-  <div class="trip-card-body">
-    <h3 class="trip-title">ПВД Сплав: Река Клязьма</h3>
-    <p class="trip-desc">Лёгкий сплав по реке Клязьма для начинающих.</p>
-  </div>
-</div>
-
-<div class="trip-card" data-type="all pvd allpvd raft">
-  <img src="assets/img/icon-rafting.png" alt="Сплав" class="trip-card-img">
-  <div class="trip-card-body">
-    <h3 class="trip-title">ПВД Сплав: Река Москва</h3>
-    <p class="trip-desc">Сплав на байдарках по реке Москва.</p>
-  </div>
-</div>
-<div class="trip-card" data-type="all pvd allpvd raft">
-  <img src="assets/img/icon-rafting.png" alt="Сплав" class="trip-card-img">
-  <div class="trip-card-body">
-    <h3 class="trip-title">ПВД Сплав: Река Яуза</h3>
-    <p class="trip-desc">Короткий сплав по речке Яуза недалеко от города.</p>
-  </div>
-</div>
-
-<!-- Большие путешествия -->
-<div class="trip-card" data-type="all big">
-  <img src="assets/img/kamchatka.jpg" alt="Камчатка" class="trip-card-img">
-  <div class="trip-card-body">
-    <p class="trip-date"></p>
-    <h3 class="trip-title">Камчатка</h3>
-    <p class="trip-desc">Экспедиция по вулканам и горячим источникам Камчатки.</p>
-    <p><b>В программе:</b></p>
-    <ul class="trip-program">
-      <li>Восхождение на вулканы Авачинский и Корякский;</li>
-      <li>Посещение горячих источников Нарзана;</li>
-      <li>Сплав по реке Быстрая;</li>
-      <li>Экскурсия в долину гейзеров;</li>
-      <li>Знакомство с местной фауной и флорой.</li>
-    </ul>
-    <p>Километраж: <b>180 км</b><br>Сложность: <b>средняя (3/5)</b><br>Стоимость: <span class="trip-price">120 000 рублей</span></p>
-  </div>
-</div>
-
-<div class="trip-card" data-type="all big">
-  <img src="assets/img/baikal.jpg" alt="Байкал" class="trip-card-img">
-  <div class="trip-card-body">
-    <p class="trip-date"></p>
-    <h3 class="trip-title">Байкал</h3>
-    <p class="trip-desc">Комбинированный тур пешком и на водном транспорте вокруг Байкала.</p>
-    <p><b>В программе:</b></p>
-    <ul class="trip-program">
-      <li>Пешие переходы по берегу Ольхона;</li>
-      <li>Морская прогулка по синим водам Байкала;</li>
-      <li>Посещение поселка Листвянка и Байкальского музея;</li>
-      <li>Ночевки в уединённых турбазах;</li>
-      <li>Дегустация омуль и других местных деликатесов.</li>
-    </ul>
-    <p>Километраж: <b>120 км</b><br>Сложность: <b>легкая (2/5)</b><br>Стоимость: <span class="trip-price">85 000 рублей</span></p>
-  </div>
-</div>
-
-<div class="trip-card" data-type="all big">
-  <img src="assets/img/vyborg.jpg" alt="Выборг" class="trip-card-img">
-  <div class="trip-card-body">
-    <p class="trip-date"></p>
-    <h3 class="trip-title">Выборг</h3>
-    <p class="trip-desc">Культурно-историческое путешествие в средневековый Выборг.</p>
-    <p><b>В программе:</b></p>
-    <ul class="trip-program">
-      <li>Экскурсия по Выборгскому замку;</li>
-      <li>Прогулка по старому городу;</li>
-      <li>Посещение музея Карельского перешейка;</li>
-      <li>Обзорная экскурсия на катере по заливу;</li>
-      <li>Свободное время в уютных кафе и на набережной.</li>
-    </ul>
-    <p>Километраж: <b>15 км</b><br>Сложность: <b>легкая (1/5)</b><br>Стоимость: <span class="trip-price">30 000 рублей</span></p>
-  </div>
-</div>
+<div id="cards-container"></div>
