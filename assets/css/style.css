@@ -317,7 +317,7 @@ footer {
 .trip-card {
   background: #fff;
   border-radius: 0.75rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   transition: box-shadow .2s;
   overflow: hidden;
   margin: 2rem auto;
@@ -326,7 +326,7 @@ footer {
 }
 
 .trip-card:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
 .trip-card-img {
@@ -373,49 +373,4 @@ footer {
 .trip-price {
   color: #2e8b57;
   font-weight: bold;
-}
-
-/* == Горизонтальная карусель для карточек >3 == */
-.grid.carousel {
-  display: flex;            /* в одну строку */
-  flex-wrap: nowrap;        /* без переноса */
-  overflow-x: auto;         /* горизонтальный скролл */
-  scroll-snap-type: x mandatory;
-}
-.grid.carousel::-webkit-scrollbar {
-  display: none;            /* прячем полосу прокрутки */
-}
-.grid.carousel .service-card,
-.grid.carousel .trip-card {
-  flex: 0 0 calc((100% - 2rem) / 3);  /* ровно по 3 в ширину */
-  margin-right: 1rem;
-  scroll-snap-align: start;
-}
-
-/* == Режим карусели для .grid == */
-.grid.carousel {
-  display: flex;               /* вместо grid */
-  flex-wrap: nowrap;           /* без переноса на новую строку */
-  overflow-x: auto;            /* горизонтальный скролл */
-  scroll-snap-type: x mandatory;
-  grid-template-columns: unset; /* сбрасываем колонки грида */
-  gap: 0;                       /* сбрасываем отступ между ячейками грида */
-}
-
-.grid.carousel::-webkit-scrollbar {
-  display: none;               /* прячем полоску прокрутки */
-}
-
-/* ширина карточки — минимум 220px (как в grid), остальные параметры */
-.grid.carousel > .service-card,
-.grid.carousel > .trip-card {
-  flex: 0 0 220px;
-  margin-right: 1rem;
-  scroll-snap-align: start;
-}
-
-/* у последней карточки нет лишнего отступа */
-.grid.carousel > .service-card:last-child,
-.grid.carousel > .trip-card:last-child {
-  margin-right: 0;
 }
