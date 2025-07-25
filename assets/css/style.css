@@ -186,6 +186,18 @@ footer {
   .about-logo {
     margin: 0 auto 1rem;
   }
+  /* ========== MOBILE SWIPER ========== */
+  /* Для всех слайдеров на узких экранах показываем по 1 карточке */
+  .swiper-wrapper {
+    /* Убрать перенос, чтобы flex не ломал ширину */
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+  .swiper-slide {
+    /* Занимает всю ширину контейнера */
+    flex: 0 0 100% !important;
+    margin-right: 0 !important;
+  }
 }
 
 /* ====== Панель фильтров ====== */
