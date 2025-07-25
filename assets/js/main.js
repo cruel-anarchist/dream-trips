@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const mainBtns   = document.querySelectorAll('#main-filters .filter-item');
-  const subBtns    = document.querySelectorAll('.has-dropdown .dropdown .filter-item');
-  const container  = document.getElementById('cards-container');
+  const mainBtns  = document.querySelectorAll('#main-filters .filter-item');
+  const subBtns   = document.querySelectorAll('.has-dropdown .dropdown .filter-item');
+  const container = document.getElementById('cards-container');
   let swiper;
 
   async function loadCards() {
-    // 1) Подгружаем шаблон из корня
+    // 1) Шаблон
     const tmplResp = await fetch('../events-cards.html');
     const tmplHtml = await tmplResp.text();
     const tmpDiv   = document.createElement('div');
@@ -13,16 +13,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const template = tmpDiv.querySelector('#event-template');
     document.body.appendChild(template);
 
-    // 2) Подгружаем данные из корня
+    // 2) Данные
     const dataResp = await fetch('../events.json');
     const events   = await dataResp.json();
 
+    // 3) Рендер
     container.innerHTML = '';
     events.forEach(evt => {
       const clone = template.content.cloneNode(true);
-      const card  = clone.querySelector('div');
+      // вот здесь корневая карточка:
+      const card = clone.querySelector('.trip-card');
 
-      // дата
+      // дата (если есть)
       const dateEl = card.querySelector('.trip-date');
       if (evt.date) dateEl.innerHTML = evt.date;
       else dateEl.remove();
@@ -38,15 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // программа
       const progEl = card.querySelector('.trip-program');
-      if (evt.program) {
+      if (Array.isArray(evt.program)) {
         evt.program.forEach(item => {
           const li = document.createElement('li');
           li.textContent = item;
           progEl.appendChild(li);
         });
-      } else progEl.remove();
+      } else {
+        progEl.remove();
+      }
 
-      // мета (км, уровень, цена)
+      // мета: км, уровень, цена
       const metaEl = card.querySelector('.trip-meta');
       const parts = [];
       if (evt.km)    parts.push(`Километраж: <b>${evt.km}</b>`);
@@ -55,8 +59,12 @@ document.addEventListener('DOMContentLoaded', () => {
       if (parts.length) metaEl.innerHTML = parts.join('<br>');
       else metaEl.remove();
 
-      // теги
+      // сохраняем теги для фильтрации
       card.dataset.type = evt.type.join(' ');
+
+      // обязательно присваиваем swiper-slide,
+      // без этого Swiper не увидит ваши слайды
+      card.classList.add('swiper-slide');
 
       container.appendChild(card);
     });
@@ -92,6 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function showAll() {
       cards().forEach(c => c.style.display = '');
+      // после показа всех карточек — сброс слайдера
+      swiper.update();
+      swiper.slideTo(0);
     }
 
     function filterCards(filter) {
@@ -103,9 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
           card.style.display = types.includes(filter) ? '' : 'none';
         });
       }
-      setTimeout(() => { swiper.update(); swiper.slideTo(0); }, 0);
+      setTimeout(() => {
+        swiper.update();
+        swiper.slideTo(0);
+      }, 0);
     }
 
+    // навешиваем клики
     mainBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         mainBtns.forEach(b => b.classList.remove('active'));
@@ -113,19 +128,21 @@ document.addEventListener('DOMContentLoaded', () => {
         filterCards(btn.dataset.filter);
       });
     });
-
     subBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         subBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        mainBtns.forEach(b =>
-          b.dataset.filter === 'pvd'
-            ? b.classList.add('active')
-            : b.classList.remove('active')
-        );
+        // держим «ПВД» в основном меню
+        mainBtns.forEach(b => {
+          if (b.dataset.filter === 'pvd') b.classList.add('active');
+          else b.classList.remove('active');
+        });
         filterCards(btn.dataset.filter);
       });
     });
+
+    // стартовая загрузка — показать всё
+    showAll();
   }
 
   loadCards();
