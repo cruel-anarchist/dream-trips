@@ -13,27 +13,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2) Настроить фильтрацию
   function initFiltering() {
-    const cards = document.querySelectorAll('#cards-container .service-card');
+    const cards = document.querySelectorAll('#cards-container .service-card, #cards-container .trip-card');
 
     function showAll() {
-      cards.forEach(c => c.style.display = 'flex');
+      cards.forEach(c => c.style.display = '');
     }
 
     function filterCards(filter) {
       if (filter === 'all') {
         return showAll();
       }
-      if (filter === 'allpvd') {
-        // показываем все, у кого в data-type есть 'pvd'
-        cards.forEach(card => {
-          const types = card.dataset.type.split(' ');
-          card.style.display = types.includes('pvd') ? 'flex' : 'none';
-        });
-        return;
-      }
       cards.forEach(card => {
         const types = card.dataset.type.split(' ');
-        card.style.display = types.includes(filter) ? 'flex' : 'none';
+        card.style.display = types.includes(filter) ? '' : 'none';
       });
     }
 
