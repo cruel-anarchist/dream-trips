@@ -1,34 +1,38 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const mainBtns       = document.querySelectorAll('#main-filters .filter-item');
-  const subBtns        = document.querySelectorAll('.has-dropdown .dropdown .filter-item');
-  const container      = document.getElementById('cards-container');
-  const template       = document.getElementById('event-template').content.firstElementChild;
+  const mainBtns   = document.querySelectorAll('#main-filters .filter-item');
+  const subBtns    = document.querySelectorAll('.has-dropdown .dropdown .filter-item');
+  const container  = document.getElementById('cards-container');
   let swiper;
 
-  // 1) Загрузить данные и отрисовать карточки
   async function loadCards() {
-    const resp = await fetch('events.json');
-    const data = await resp.json();
+    // 1) Подгрузить шаблон
+    const tmplResp = await fetch('events-cards.html');
+    const tmplHtml = await tmplResp.text();
+    const tmpDiv   = document.createElement('div');
+    tmpDiv.innerHTML = tmplHtml;
+    const template = tmpDiv.querySelector('#event-template');
+    document.body.appendChild(template);
 
-    container.innerHTML = '';  // очистить
+    // 2) Подгрузить данные
+    const dataResp = await fetch('events.json');
+    const events   = await dataResp.json();
 
-    data.forEach(evt => {
-      const card = template.cloneNode(true);
+    container.innerHTML = '';
+    events.forEach(evt => {
+      const clone = template.content.cloneNode(true);
+      const card  = clone.querySelector('div');
 
       // дата
       const dateEl = card.querySelector('.trip-date');
-      if (evt.date) {
-        dateEl.innerHTML = evt.date;
-      } else {
-        dateEl.remove();
-      }
+      if (evt.date) dateEl.innerHTML = evt.date;
+      else dateEl.remove();
 
       // изображение
       const img = card.querySelector('img');
       img.src = evt.img;
       img.alt = evt.alt;
 
-      // title / desc
+      // заголовок и описание
       card.querySelector('.trip-title').textContent = evt.title;
       card.querySelector('.trip-desc').textContent  = evt.desc;
 
@@ -40,26 +44,20 @@ document.addEventListener('DOMContentLoaded', () => {
           li.textContent = item;
           progEl.appendChild(li);
         });
-      } else {
-        progEl.remove();
-      }
+      } else progEl.remove();
 
-      // мета: км, уровень, цена
+      // мета
       const metaEl = card.querySelector('.trip-meta');
       const parts = [];
       if (evt.km)    parts.push(`Километраж: <b>${evt.km}</b>`);
       if (evt.level) parts.push(`Сложность: <b>${evt.level}</b>`);
-      if (evt.price) parts.push(`Стоимость: <span class="trip-price">${evt.price}</span>`);
-      if (parts.length) {
-        metaEl.innerHTML = parts.join('<br>');
-      } else {
-        metaEl.remove();
-      }
+      if (evt.price) parts.push(`Стоимость: <span class=\"trip-price\">${evt.price}</span>`);
+      if (parts.length) metaEl.innerHTML = parts.join('<br>');
+      else metaEl.remove();
 
       // теги
       card.dataset.type = evt.type.join(' ');
 
-      // добавляем в DOM
       container.appendChild(card);
     });
 
@@ -67,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSwiper();
   }
 
-  // 2) Инициализация Swiper
   function initSwiper() {
     if (swiper) swiper.destroy(true, true);
     swiper = new Swiper('.all-events-swiper', {
@@ -90,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 3) Фильтрация
   function initFiltering() {
     const cards = () => container.querySelectorAll('.trip-card');
 
@@ -107,10 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
           card.style.display = types.includes(filter) ? '' : 'none';
         });
       }
-      setTimeout(() => {
-        swiper.update();
-        swiper.slideTo(0);
-      }, 0);
+      setTimeout(() => { swiper.update(); swiper.slideTo(0); }, 0);
     }
 
     mainBtns.forEach(btn => {
@@ -125,10 +118,9 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.addEventListener('click', () => {
         subBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        mainBtns.forEach(b =>
-          b.dataset.filter === 'pvd'
-            ? b.classList.add('active')
-            : b.classList.remove('active')
+        mainBtns.forEach(b => b.dataset.filter === 'pvd'
+          ? b.classList.add('active')
+          : b.classList.remove('active')
         );
         filterCards(btn.dataset.filter);
       });
