@@ -89,45 +89,22 @@ h2 {
   line-height: 1.5;
 }
 
-/* == Сетка карточек == */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-  gap: 1.5rem;
+/* Стили для Swiper-контейнера */
+.all-events-swiper {
   max-width: 900px;
   margin: 2rem auto;
   padding: 0 1rem;
 }
-
-.service-card {
-  display: flex;
-  align-items: center;
-  background: #fff;
-  padding: 1.2rem;
-  border-radius: .5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  transition: box-shadow .2s;
+.all-events-swiper .swiper-wrapper {
+  display: flex !important;
+  flex-wrap: nowrap !important;
 }
-.service-card:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+.swiper-slide {
+  flex: 0 0 calc((100% - 32px*2) / 3) !important; /* ровно 3 слайда, учитывая 16px отступ */
+  margin-right: 16px;
 }
-.service-card img {
-  width: 64px; height: 64px;
-  object-fit: contain;
-  object-position: center;
-  margin-right: 1rem;
-}
-.service-card-content {
-  flex: 1;
-}
-.service-card-content h3 {
-  font-family: var(--font-heading);
-  margin: 0 0 .5rem;
-  text-align: center;
-}
-.service-card-content p {
-  font-size: .95rem;
-  margin: 0;
+.swiper-slide:nth-child(3n) {
+  margin-right: 0;
 }
 
 /* == Контакты / Форма == */
