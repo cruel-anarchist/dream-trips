@@ -1,5 +1,4 @@
 [
-  // === ПВД Пеший ===
   {
     "type": ["all", "pvd", "allpvd", "hike"],
     "img": "assets/img/hike-ozera-podmoskovya.jpg",
@@ -90,8 +89,6 @@
     "level": "легкая (2/5)",
     "price": "5 000 рублей"
   },
-
-  // === ПВД Сплав ===
   {
     "type": ["all", "pvd", "allpvd", "raft"],
     "img": "assets/img/raft-klyazma.jpg",
@@ -182,8 +179,6 @@
     "level": "средняя (3/5)",
     "price": "6 900 рублей"
   },
-
-  // === Большие путешествия ===
   {
     "type": ["all", "big"],
     "img": "assets/img/kamchatka.jpg",
