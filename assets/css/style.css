@@ -375,3 +375,19 @@ footer {
   font-weight: bold;
 }
 
+/* == Горизонтальная карусель для карточек >3 == */
+.grid.carousel {
+  display: flex;            /* в одну строку */
+  flex-wrap: nowrap;        /* без переноса */
+  overflow-x: auto;         /* горизонтальный скролл */
+  scroll-snap-type: x mandatory;
+}
+.grid.carousel::-webkit-scrollbar {
+  display: none;            /* прячем полосу прокрутки */
+}
+.grid.carousel .service-card,
+.grid.carousel .trip-card {
+  flex: 0 0 calc((100% - 2rem) / 3);  /* ровно по 3 в ширину */
+  margin-right: 1rem;
+  scroll-snap-align: start;
+}
