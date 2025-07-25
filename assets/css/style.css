@@ -312,3 +312,61 @@ footer {
   line-height: 1.4;
   overflow-wrap: break-word;
 }
+
+/* == Карточка большого путешествия == */
+.trip-card {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 400px;
+  font-family: var(--font-body);
+}
+
+.trip-card-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.trip-card-body {
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.trip-date {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #444;
+  line-height: 1.4;
+}
+
+.trip-title {
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.trip-desc {
+  margin-bottom: 1rem;
+}
+
+.trip-program {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.trip-program li {
+  margin-bottom: 0.4rem;
+}
+
+.trip-price {
+  color: #2e8b57;
+  font-weight: bold;
+}
+
