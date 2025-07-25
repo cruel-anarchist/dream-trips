@@ -13,19 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 2) Настроить фильтрацию и карусель
   function initFiltering() {
-    // берём все service- и trip-карточки
-    const cards = Array.from(
-      document.querySelectorAll('#cards-container .service-card, #cards-container .trip-card')
-    );
+    // Функция, которая каждый раз берёт актуальные карточки из DOM
+    const getCards = () =>
+      Array.from(document.querySelectorAll(
+        '#cards-container .service-card, #cards-container .trip-card'
+      ));
 
-    // переключение в режим «карусели», если >3 видимых
+    // Если >3 видимых — включаем режим «карусели»
     function updateCarousel() {
-      const visibleCount = cards.filter(c => c.style.display !== 'none').length;
-      cardsContainer.classList.toggle('carousel', visibleCount > 3);
+      const visible = getCards().filter(c => c.style.display !== 'none').length;
+      cardsContainer.classList.toggle('carousel', visible > 3);
     }
 
     function showAll() {
-      cards.forEach(c => c.style.display = '');
+      getCards().forEach(c => c.style.display = '');
       updateCarousel();
     }
 
@@ -33,14 +34,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (filter === 'all') {
         return showAll();
       }
-      cards.forEach(card => {
+      getCards().forEach(card => {
         const types = card.dataset.type.split(' ');
         card.style.display = types.includes(filter) ? '' : 'none';
       });
       updateCarousel();
     }
 
-    // Главные фильтры
+    // === обработчики главных кнопок ===
     mainBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const f = btn.dataset.filter;
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.classList.add('active');
 
         if (f === 'pvd') {
+          // показываем «Все ПВД»
           subBtns.forEach(b => b.classList.remove('active'));
           subBtns[0].classList.add('active');
           filterCards('allpvd');
@@ -57,23 +59,21 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Подфильтры
+    // === обработчики подменю ПВД ===
     subBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const f = btn.dataset.filter;
         subBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
-        mainBtns.forEach(b => {
-          if (b.dataset.filter === 'pvd') b.classList.add('active');
-          else b.classList.remove('active');
-        });
-
+        // держим «ПВД» активным в главном меню
+        mainBtns.forEach(b =>
+          b.dataset.filter === 'pvd' ? b.classList.add('active') : b.classList.remove('active')
+        );
         filterCards(f);
       });
     });
 
-    // стартовое состояние — показать всё
+    // старт
     showAll();
   }
 
