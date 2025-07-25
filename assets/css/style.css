@@ -317,16 +317,16 @@ footer {
 .trip-card {
   background: #fff;
   border-radius: 0.75rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: box-shadow .2s;
   overflow: hidden;
   margin: 2rem auto;
   max-width: 400px;
   font-family: var(--font-body);
-  transition: box-shadow .2s;
 }
 
 .trip-card:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);  /* ← копируем эффект hover со старых карточек */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 .trip-card-img {
