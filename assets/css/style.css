@@ -54,7 +54,7 @@ h2 {
   height: 100%;
 }
 
-/* Устанавливаем единую пропорцию для изображений */
+/* Универсальные пропорции для изображений */
 .category-swiper .swiper-slide img,
 .trip-card-img {
   width: 100%;
@@ -63,7 +63,7 @@ h2 {
   display: block;
 }
 
-/* Тело карточки распространяется на оставшееся пространство */
+/* Тело карточки на всю оставшуюся высоту */
 .trip-card-body {
   padding: 1.5rem;
   flex: 1;
@@ -311,7 +311,9 @@ footer {
 .has-dropdown .dropdown {
   display: none;
   position: absolute;
-  top: 100%; left: 0; right: 0;
+  top: 100%;
+  left: 0;
+  right: 0;
   background: var(--color-bg);
   border-radius: 0 0 2rem 2rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -327,9 +329,9 @@ footer {
   color: #fff;
 }
 .has-dropdown .dropdown .filter-item.active {
-  background: #003366; /* более тёмный синий — чтобы отличался от обычного */
+  background: #003366;
   color: #fff;
-  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.05); /* для эффекта нажатия */
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.05);
 }
 .has-dropdown .dropdown .filter-item:hover {
   background: var(--color-primary);
@@ -369,10 +371,12 @@ footer {
 .social-link svg { width: 60%; height: 60%; fill: #fff; }
 
 /* ====================
-   Равные высоты карточек
+   Равные высоты карточек сервисов
    ==================== */
 .grid {
-  align-items: start; /* ячейки выравниваются по верху */
+  display: grid;
+  gap: 1rem;
+  align-items: start;
 }
 .service-card {
   display: flex;
@@ -388,68 +392,4 @@ footer {
 .service-card-content p {
   line-height: 1.4;
   overflow-wrap: break-word;
-}
-
-/* == Карточка большого путешествия == */
-.trip-card {
-  background: #fff;
-  border-radius: 0.75rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: box-shadow .2s;
-  overflow: hidden;
-  margin: 2rem auto;
-  max-width: 400px;
-  font-family: var(--font-body);
-}
-
-.trip-card:hover {
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-}
-
-.category-swiper .swiper-slide img,
-.trip-card-img {
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  display: block;
-  object-fit: cover;
-}
-
-.trip-card-body {
-  padding: 1.5rem;
-  font-size: 0.95rem;
-  color: #333;
-}
-
-.trip-date {
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  color: #444;
-  line-height: 1.4;
-}
-
-.trip-title {
-  font-family: var(--font-heading);
-  color: var(--color-accent);
-  font-size: 1.2rem;
-  margin: 0.5rem 0 1rem;
-}
-
-.trip-desc {
-  margin-bottom: 1rem;
-}
-
-.trip-program {
-  margin: 0.5rem 0 1rem;
-  padding-left: 1.25rem;
-  list-style-type: disc;
-}
-
-.trip-program li {
-  margin-bottom: 0.4rem;
-}
-
-.trip-price {
-  color: #2e8b57;
-  font-weight: bold;
 }
