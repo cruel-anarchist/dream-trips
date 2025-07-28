@@ -64,6 +64,15 @@ document.addEventListener('DOMContentLoaded', () => {
           if (parts.length) meta.innerHTML = parts.join('<br>');
           else meta.remove();
 
+          const footer = clone.querySelector('.trip-footer');
+          if (footer && evt.link) {
+            const btn = document.createElement('a');
+            btn.href = evt.link;
+            btn.textContent = 'Подробнее';
+            btn.className = 'btn-primary';
+            footer.appendChild(btn);
+          }
+          
           wr.appendChild(clone);
         }
       });
