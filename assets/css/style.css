@@ -27,27 +27,6 @@ h2 {
   display: none;
 }
 
-/* ============ Секция категорий ============ */
-.category-swiper .swiper-wrapper {
-  /* вместо пустого правила: */
-  display: flex !important;
-  flex-wrap: nowrap !important;
-  align-items: stretch;        /* растягиваем все слайды по высоте самого высокого */
-}
-
-.category-swiper .swiper-slide {
-  /* вместо пустых ширин/отступов: */
-  display: flex;
-  flex-direction: column;      /* чтобы контент внутри мог растягиваться */
-  flex: 1 0 auto;              /* все слайды одинаковой высоты */
-  margin-right: 16px;          /* межслайдовый отступ */
-}
-
-/* чтобы последний слайд не имел лишнего отступа */
-.category-swiper .swiper-slide:nth-child(3n) {
-  margin-right: 0;
-}
-
 /* ============ Равная высота слайдов в Swiper ============ */
 /* Обёртка – выставляем всем слайдам одинаковую высоту */
 .all-events-swiper .swiper-wrapper,
