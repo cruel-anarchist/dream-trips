@@ -43,22 +43,13 @@ h2 {
 /* ============ Стили для Keen Slider ============ */
 /* Контейнер слайдера */
 .category-swiper {
-  display: flex;
-  align-items: stretch;        /* для равной высоты */
+  padding-left: 16px;    /* отступ перед первым слайдом */
   overflow: hidden;
-  padding-left: 1rem;          /* небольшой отступ слева */
 }
-
-/* Слайды */
 .category-swiper .keen-slider__slide {
-  flex: 0 0 calc((100% - 2 * 16px) / 3) !important; /* 3 в ряд на десктопе */
-  margin-right: 16px;
-  display: flex;               /* чтобы внутреннее содержимое могло растягиваться */
-  flex-direction: column;
+  margin-right: 16px;   /* отступ между слайдами */
 }
-
-/* У последнего слайда в ряду убираем отступ справа */
-.category-swiper .keen-slider__slide:nth-child(3n) {
+.category-swiper .keen-slider__slide:last-child {
   margin-right: 0;
 }
 
