@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Селекторы кнопок фильтров и секций
-  const mainBtns = document.querySelectorAll('#main-filters .filter-item');
-  const subBtns  = document.querySelectorAll('.has-dropdown .dropdown .filter-item');
-  const sections = document.querySelectorAll('.category-section');
+  const mainBtns  = document.querySelectorAll('#main-filters .filter-item');
+  const subBtns   = document.querySelectorAll('.has-dropdown .dropdown .filter-item');
+  const sections  = document.querySelectorAll('.category-section');
+  const sliders   = {};
 
-  // Наборы групп для каждого фильтра
+  // Определяем наборы групп для каждого фильтра
   const groupMap = {
     all:    ['hike', 'raft', 'big'],
     allpvd: ['hike', 'raft'],
@@ -15,34 +16,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Загрузка шаблона и данных, заполнение секций
   async function loadCards() {
-    // Шаблон карточки
-    const tmplResp  = await fetch('../events-cards.html');
-    const tmplHtml  = await tmplResp.text();
-    const tmpDiv    = document.createElement('div');
+    // Загружаем шаблон карточки
+    const tmplResp = await fetch('../events-cards.html');
+    const tmplHtml = await tmplResp.text();
+    const tmpDiv   = document.createElement('div');
     tmpDiv.innerHTML = tmplHtml;
-    const template  = tmpDiv.querySelector('#event-template');
+    const template = tmpDiv.querySelector('#event-template');
 
-    // Данные из JSON
+    // Загружаем JSON с событиями
     const dataResp = await fetch('../events.json');
     const events   = await dataResp.json();
 
-    // Заполняем каждую секцию
+    // Для каждой категории вставляем соответствующие карточки
     sections.forEach(sec => {
       const container = sec.querySelector('.category-swiper');
-      container.innerHTML = '';  // очищаем
+      container.innerHTML = '';  // очищаем прошлые слайды
       const grp = sec.dataset.group;
 
       events.forEach(evt => {
         if (evt.type.includes(grp)) {
-          // Клонируем шаблон и наполняем данные
           const slide = template.content.cloneNode(true).querySelector('div');
           slide.classList.add('keen-slider__slide');
           slide.dataset.type = evt.type.join(' ');
 
+          // наполнение содержимого
           const img = slide.querySelector('img');
           img.src = evt.img;
           img.alt = evt.alt;
-
           slide.querySelector('.trip-title').textContent = evt.title;
           slide.querySelector('.trip-desc').textContent  = evt.desc;
 
@@ -72,35 +72,80 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
+    initSliders();
     initFiltering();
+  }
+
+  // Инициализация Keen Slider для каждой секции
+  function initSliders() {
+    sections.forEach(sec => {
+      const grp = sec.dataset.group;
+      const el  = sec.querySelector('.category-swiper');
+
+      // если уже был — уничтожаем
+      if (sliders[grp]) {
+        sliders[grp].destroy();
+      }
+
+      // создаём новый
+      const slider = new KeenSlider(el, {
+        loop: false,
+        spacing: 16,
+        slides: {
+          perView: 3,
+          breakpoints: {
+            '(max-width: 768px)': {
+              perView: 1,
+              spacing: 16
+            },
+            '(min-width: 769px) and (max-width: 1023px)': {
+              perView: 2,
+              spacing: 16
+            },
+            '(min-width: 1024px)': {
+              perView: 3,
+              spacing: 16
+            }
+          }
+        }
+      });
+
+      // навигация стрелками из DOM
+      const prev = sec.querySelector('.arrow-prev');
+      const next = sec.querySelector('.arrow-next');
+      prev.addEventListener('click', () => slider.prev());
+      next.addEventListener('click', () => slider.next());
+
+      sliders[grp] = slider;
+    });
   }
 
   // Настройка фильтрации секций
   function initFiltering() {
+    // Применение фильтра по ключу
     function apply(filter) {
       const showGroups = groupMap[filter] || [];
       sections.forEach(sec => {
         const grp = sec.dataset.group;
         if (showGroups.includes(grp)) {
           sec.style.display = '';
-          // при показе заново пересобрать и сбросить в начало
-          const keen = sec.querySelector('.category-swiper').keen;
-          keen.update();
-          keen.moveToIdx(0);
+          // при показе сбрасываем на первый слайд
+          sliders[grp].update();
+          sliders[grp].moveToIdx(0);
         } else {
           sec.style.display = 'none';
         }
       });
     }
 
-    // Основные кнопки
+    // Клик по основным кнопкам
     mainBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         mainBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
 
         if (btn.dataset.filter === 'pvd') {
-          subBtns.forEach((b,i) => b.classList.toggle('active', i===0));
+          subBtns.forEach((b, i) => b.classList.toggle('active', i === 0));
           apply('allpvd');
         } else {
           subBtns.forEach(b => b.classList.remove('active'));
@@ -109,22 +154,23 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    // Подменю ПВД
+    // Клик по подменю «ПВД»
     subBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         subBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
+
         mainBtns.forEach(b => {
-          b.classList.toggle('active', b.dataset.filter==='pvd');
+          b.classList.toggle('active', b.dataset.filter === 'pvd');
         });
         apply(btn.dataset.filter);
       });
     });
 
-    // Стартовое состояние
-    mainBtns.forEach(b=>b.classList.remove('active'));
+    // стартовое состояние — «Все направления»
+    mainBtns.forEach(b => b.classList.remove('active'));
     document.querySelector('[data-filter="all"]').classList.add('active');
-    subBtns.forEach(b=>b.classList.remove('active'));
+    subBtns.forEach(b => b.classList.remove('active'));
     apply('all');
   }
 
