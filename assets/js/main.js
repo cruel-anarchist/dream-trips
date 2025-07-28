@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sections  = document.querySelectorAll('.category-section');
   const swipers   = {};
 
-  // Определяем, какие группы показывать при каждом фильтре
+  // Какие группы показывать для каждого фильтра
   const groupMap = {
     all:    ['hike','raft','big'],
     allpvd: ['hike','raft'],
@@ -14,39 +14,44 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   async function loadCards() {
-    // грузим шаблон карточки
+    // Шаблон карточек
     const tmplResp = await fetch('../events-cards.html');
     const tmplHtml = await tmplResp.text();
     const tmpDiv   = document.createElement('div');
     tmpDiv.innerHTML = tmplHtml;
     const template = tmpDiv.querySelector('#event-template');
 
-    // грузим данные
+    // Данные
     const dataResp = await fetch('../events.json');
     const events   = await dataResp.json();
 
-    // очищаем каждый слайдер и вставляем карточки своей категории
+    // Вставляем карточки в секции
     sections.forEach(sec => {
       const wr  = sec.querySelector('.swiper-wrapper');
       const grp = sec.dataset.group;
       wr.innerHTML = '';
+
       events.forEach(evt => {
         if (evt.type.includes(grp)) {
           const clone = template.content.cloneNode(true).querySelector('div');
           clone.classList.add('swiper-slide');
           clone.dataset.type = evt.type.join(' ');
-          // img
+
+          // Картинка
           const img = clone.querySelector('img');
           img.src = evt.img;
           img.alt = evt.alt;
-          // title & desc
+
+          // Заголовок и описание
           clone.querySelector('.trip-title').textContent = evt.title;
           clone.querySelector('.trip-desc').textContent  = evt.desc;
-          // date
+
+          // Дата
           const dateEl = clone.querySelector('.trip-date');
-          if (evt.date) dateEl.innerHTML = evt.date;
+          if (evt.date) dateEl.textContent = evt.date;
           else dateEl.remove();
-          // program
+
+          // Программа
           const prog = clone.querySelector('.trip-program');
           if (Array.isArray(evt.program)) {
             evt.program.forEach(item => {
@@ -55,7 +60,8 @@ document.addEventListener('DOMContentLoaded', () => {
               prog.appendChild(li);
             });
           } else prog.remove();
-          // meta (km, level, price)
+
+          // Мета (км, сложность, цена)
           const meta = clone.querySelector('.trip-meta');
           const parts = [];
           if (evt.km)    parts.push(`Километраж: <b>${evt.km}</b>`);
@@ -73,37 +79,54 @@ document.addEventListener('DOMContentLoaded', () => {
     initFiltering();
   }
 
-function initSwipers() {
-  sections.forEach(sec => {
-    const grp = sec.dataset.group;
-    const el  = sec.querySelector('.category-swiper');
-    if (swipers[grp]) swipers[grp].destroy(true, true);
+  function initSwipers() {
+    sections.forEach(sec => {
+      const grp = sec.dataset.group;
+      const el  = sec.querySelector('.category-swiper');
 
-    swipers[grp] = new Swiper(el, {
-      slidesPerView: 1,
-      spaceBetween: 16,
-      navigation: {
-        prevEl: el.querySelector('.swiper-button-prev'),
-        nextEl: el.querySelector('.swiper-button-next'),
-      },
-      pagination: {
-        el: el.querySelector('.swiper-pagination'),
-        clickable: true,
-      },
-      breakpoints: {
-        0:   { slidesPerView: 1 },
-        768: { slidesPerView: 2 },
-        1024:{ slidesPerView: 3 }
-      },
-      observer: true,
-      observeParents: true,
-      touchEventsTarget: 'wrapper',
+      // Уничтожаем старый инстанс
+      if (swipers[grp]) {
+        swipers[grp].destroy(true, true);
+      }
+
+      // Создаём новый
+      const swiper = swipers[grp] = new Swiper(el, {
+        // Навигация
+        navigation: {
+          prevEl: el.querySelector('.swiper-button-prev'),
+          nextEl: el.querySelector('.swiper-button-next'),
+        },
+        // Пагинация
+        pagination: {
+          el: el.querySelector('.swiper-pagination'),
+          clickable: true,
+        },
+        // Отступы между слайдами
+        spaceBetween: 16,
+        // Точка отсчёта – 1 слайд
+        slidesPerView: 1,
+        // Брейкпоинты: до 767px – 1, 768–1023 – 2, от 1024 – 3
+        breakpoints: {
+          0:   { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024:{ slidesPerView: 3 },
+        },
+        // Авто‑обновление при изменении DOM
+        observer: true,
+        observeParents: true,
+        // Захват тач‑событий именно на wrapper
+        touchEventsTarget: 'wrapper',
+      });
+
+      // Пересчитываем после загрузки картинок
+      swiper.on('imagesReady', () => {
+        swiper.update();
+      });
     });
-  });
-}
+  }
 
   function initFiltering() {
-    // Применяет конкретный фильтр: показывает/скрывает секции
+    // Показ/скрытие секций по фильтру
     function apply(filter) {
       const showGroups = groupMap[filter] || [];
       sections.forEach(sec => {
@@ -118,17 +141,14 @@ function initSwipers() {
       });
     }
 
-    // Клик по кнопкам основного меню
+    // Клики по главным кнопкам
     mainBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        // подсветка
         mainBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        // сброс подменю к «Все ПВД»
+
         if (btn.dataset.filter === 'pvd') {
-          subBtns.forEach((b,i) => {
-            b.classList.toggle('active', i === 0);
-          });
+          subBtns.forEach((b,i) => b.classList.toggle('active', i === 0));
           apply('allpvd');
         } else {
           subBtns.forEach(b => b.classList.remove('active'));
@@ -137,13 +157,12 @@ function initSwipers() {
       });
     });
 
-    // Клик по подменю ПВД
+    // Клики по подменю ПВД
     subBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        // подсветка
         subBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        // держим ПВД в основном меню
+
         mainBtns.forEach(b => {
           b.classList.toggle('active', b.dataset.filter === 'pvd');
         });
@@ -151,12 +170,13 @@ function initSwipers() {
       });
     });
 
-    // стартовый показ
+    // Стартовый фильтр
     mainBtns.forEach(b => b.classList.remove('active'));
     document.querySelector('[data-filter="all"]').classList.add('active');
     subBtns.forEach(b => b.classList.remove('active'));
     apply('all');
   }
 
+  // Запуск
   loadCards();
 });
