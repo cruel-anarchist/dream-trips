@@ -71,21 +71,22 @@ document.addEventListener('DOMContentLoaded', () => {
   function initSliders() {
     sections.forEach(sec => {
       const grp = sec.dataset.group;
-      const selector = `#slider-${grp}`;
-      // удаляем старый, если есть
+      const container = sec.querySelector('.category-swiper');
+
       if (sliders[grp]) sliders[grp].destroy();
 
       sliders[grp] = tns({
-        container: selector,
+        container: container,
         items: 3,
         gutter: 16,
         edgePadding: 16,
-        nav: false,
-        controls: true,
-        controlsText: ['‹','›'],
+        controls: true,               // включаем стрелки
+        controlsText: ['‹','›'],      // кастомный текст / HTML для стрелок
+        nav: false,                   // отключаем точки (если не нужны)
         responsive: {
-          0:    { items: 1, gutter: 16, edgePadding: 16 },
-          768:  { items: 3, gutter: 16, edgePadding: 0 }
+          0:   { items: 1, gutter: 16, edgePadding: 16 },
+          768: { items: 2, gutter: 16, edgePadding: 0 },
+          1024:{ items: 3, gutter: 16, edgePadding: 0 }
         }
       });
     });
