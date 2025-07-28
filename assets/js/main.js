@@ -1,31 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const mainBtns = document.querySelectorAll('#main-filters .filter-item');
-  const subBtns = document.querySelectorAll('.has-dropdown .dropdown .filter-item');
-  const sections = document.querySelectorAll('.category-section');
-  const swipers = {};
+  const mainBtns  = document.querySelectorAll('#main-filters .filter-item');
+  const subBtns   = document.querySelectorAll('.has-dropdown .dropdown .filter-item');
+  const sections  = document.querySelectorAll('.category-section');
+  const swipers   = {};
 
   // Сопоставление фильтров группам
   const groupMap = {
-    all: ['hike', 'raft', 'big'],
-    allpvd: ['hike', 'raft'],
-    hike: ['hike'],
-    raft: ['raft'],
-    big: ['big']
+    all:    ['hike','raft','big'],
+    allpvd: ['hike','raft'],
+    hike:   ['hike'],
+    raft:   ['raft'],
+    big:    ['big']
   };
 
   // Загрузка карточек и инициализация
   async function loadCards() {
     const tmplResp = await fetch('../events-cards.html');
     const tmplHtml = await tmplResp.text();
-    const tmpDiv = document.createElement('div');
+    const tmpDiv   = document.createElement('div');
     tmpDiv.innerHTML = tmplHtml;
     const template = tmpDiv.querySelector('#event-template');
 
     const dataResp = await fetch('../events.json');
-    const events = await dataResp.json();
+    const events   = await dataResp.json();
 
     sections.forEach(sec => {
-      const wr = sec.querySelector('.swiper-wrapper');
+      const wr  = sec.querySelector('.swiper-wrapper');
       const grp = sec.dataset.group;
       wr.innerHTML = '';
 
@@ -35,12 +35,17 @@ document.addEventListener('DOMContentLoaded', () => {
           clone.classList.add('swiper-slide');
 
           // Заполнение данных карточки
-          clone.querySelector('img').src = evt.img;
-          clone.querySelector('img').alt = evt.alt;
+          const img = clone.querySelector('img');
+          img.src = evt.img;
+          img.alt = evt.alt;
+          // Заглушка если изображение не найдено
+          img.onerror = () => { img.src = 'assets/img/placeholder.png'; };
+
           clone.querySelector('.trip-title').textContent = evt.title;
-          clone.querySelector('.trip-desc').textContent = evt.desc;
+          clone.querySelector('.trip-desc').textContent  = evt.desc;
           const dateEl = clone.querySelector('.trip-date');
-          evt.date ? (dateEl.textContent = evt.date) : dateEl.remove();
+          if (evt.date) dateEl.textContent = evt.date;
+          else dateEl.remove();
 
           const prog = clone.querySelector('.trip-program');
           if (Array.isArray(evt.program)) {
@@ -53,10 +58,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const meta = clone.querySelector('.trip-meta');
           const parts = [];
-          evt.km && parts.push(`Километраж: <b>${evt.km}</b>`);
-          evt.level && parts.push(`Сложность: <b>${evt.level}</b>`);
-          evt.price && parts.push(`Стоимость: <span class="trip-price">${evt.price}</span>`);
-          parts.length ? meta.innerHTML = parts.join('<br>') : meta.remove();
+          if (evt.km)    parts.push(`Километраж: <b>${evt.km}</b>`);
+          if (evt.level) parts.push(`Сложность: <b>${evt.level}</b>`);
+          if (evt.price) parts.push(`Стоимость: <span class="trip-price">${evt.price}</span>`);
+          if (parts.length) meta.innerHTML = parts.join('<br>');
+          else meta.remove();
 
           wr.appendChild(clone);
         }
@@ -71,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function initSwipers() {
     sections.forEach(sec => {
       const grp = sec.dataset.group;
-      const el = sec.querySelector('.swiper');
+      const el  = sec.querySelector('.swiper');
 
       // Удаление старого экземпляра
       if (swipers[grp]) swipers[grp].destroy(true, true);
@@ -101,10 +107,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Настройка фильтров
   function initFiltering() {
     const applyFilter = filter => {
-      const show = groupMap[filter] || [];
+      const showGroups = groupMap[filter] || [];
       sections.forEach(sec => {
         const grp = sec.dataset.group;
-        if (show.includes(grp)) {
+        if (showGroups.includes(grp)) {
           sec.style.display = '';
           swipers[grp].update();
           swipers[grp].slideTo(0);
