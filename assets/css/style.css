@@ -38,7 +38,6 @@ h2 {
 }
 .category-swiper {
   width: 100%;
-  position: relative; /* для навигационных стрелок */
 }
 
 /* === Выравнивание карточек одной высоты === */
@@ -46,14 +45,13 @@ h2 {
   display: flex !important;
 }
 .category-swiper .swiper-slide {
-  display: flex !important;
+  display: flex;
   flex-direction: column;
-  flex: 1 0 auto;
-  max-width: calc((100% - 16px*2) / 3); /* соответствует 3 слайдам */
-  margin-right: 16px;
 }
-.category-swiper .swiper-slide:last-child {
-  margin-right: 0;
+.category-swiper .swiper-slide .trip-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 /* Универсальные пропорции для изображений */
@@ -80,9 +78,9 @@ h2 {
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
   transition: box-shadow .2s;
   overflow: hidden;
-  width: 100%;
-  display: flex !important;
-  flex-direction: column;
+  margin: 2rem auto;
+  max-width: 400px;
+  font-family: var(--font-body);
 }
 .trip-card:hover {
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
@@ -119,35 +117,6 @@ h2 {
 .trip-price {
   color: #2e8b57;
   font-weight: bold;
-}
-
-/* == Навигационные стрелки (вынесены за пределы контейнера) == */
-.swiper-button-prev,
-.swiper-button-next {
-  width: 40px;
-  height: 40px;
-  background-color: transparent;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 1;
-}
-.swiper-button-prev {
-  left: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-image: url("assets/img/arrow-left.svg");
-}
-.swiper-button-next {
-  right: -20px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-image: url("assets/img/arrow-right.svg");
-}
-/* скрываем встроенные svg-стрелки */
-.swiper-button-prev::after,
-.swiper-button-next::after {
-  content: "";
 }
 
 /* == Hero == */
@@ -282,12 +251,8 @@ footer {
     height: auto;
     padding: 2rem 1rem;
   }
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-  .hero-content p {
-    font-size: 1rem;
-  }
+  .hero-content h1 { font-size: 2rem; }
+  .hero-content p  { font-size: 1rem; }
   .about-wrapper {
     flex-direction: column;
     text-align: center;
