@@ -1,4 +1,3 @@
-/* ============ Переменные и базовые стили ============ */
 :root {
   --color-primary: #004080;
   --color-accent:  #ff6600;
@@ -6,26 +5,25 @@
   --font-heading:  'Montserrat', sans-serif;
   --font-body:     'Roboto', sans-serif;
 }
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
 body {
   font-family: var(--font-body);
-  background: var(--color-bg);
-  color: #111;
-  line-height: 1.5;
+  background:   var(--color-bg);
+  color:        #111;
+  line-height:  1.5;
 }
+
 h2 {
   text-align: center;
   margin-bottom: 1rem;
 }
 
-/* ===== Скрываем старую сетку ===== */
+/* Убираем старый .grid для карточек */
 .grid { display: none; }
 
-/* ============ Секция категорий ============ */
+/* Секция категорий */
 .category-section {
   max-width: 900px;
   margin: 2rem auto;
@@ -37,59 +35,19 @@ h2 {
   text-align: center;
   margin-bottom: 1rem;
 }
-
-/* ============ Tiny Slider ============ */
-.category-swiper {
-  overflow: hidden;           /* прячет лишние элементы по краям */
-  padding-left: 16px;         /* отступ перед первым слайдом */
+.category-swiper .swiper-wrapper {
+  display: flex !important;
+  flex-wrap: nowrap !important;
 }
-.category-swiper .tns-item {
-  /* внутренний контейнер tiny-slider */
-  margin-right: 16px;         /* отступ между слайдами */
-  display: block;             /* чтобы flex-правила старые не мешали */
+.category-swiper .swiper-slide {
+  flex: 0 0 calc((100% - 16px*2) / 3) !important;
+  margin-right: 16px;
 }
-.category-swiper .tns-item:last-child {
+.category-swiper .swiper-slide:nth-child(3n) {
   margin-right: 0;
 }
-.category-swiper .tns-controls button {
-  background: var(--color-accent);
-  color: #fff;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  font-size: 1.5rem;
-  line-height: 1;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background .2s;
-}
-.category-swiper .tns-controls button:hover {
-  background: #e65500;
-}
-/* убираем возможные лишние иконки-фоны */
-.category-swiper .tns-controls button::before {
-  content: attr(data-controls) == 'prev' ? '‹' : '›';
-}
-/* подвинем их поверх слайдера */
-.category-swiper {
-  position: relative;
-}
-.category-swiper .tns-controls {
-  position: absolute;
-  top: 50%;
-  width: 100%;
-  transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
-  pointer-events: none;
-}
-.category-swiper .tns-controls button {
-  pointer-events: all;
-}
 
-/* ============ Hero с видеофоном ============ */
+/* == Hero == */
 .hero {
   position: relative;
   height: 60vh;
@@ -100,32 +58,42 @@ h2 {
   text-align: center;
   color: #fff;
 }
+
 .hero-video {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  z-index: 0;
+  z-index: 0; /* видео — за контентом */
 }
+
 .hero::after {
   content: '';
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   background: rgba(0,0,0,0.5);
   z-index: 1;
 }
+
 .hero-content {
-  position: relative; z-index: 2;
+  position: relative;
+  z-index: 2; /* текст и кнопка над затемнением */
   padding: 2rem 1rem;
 }
+
 .hero-content h1 {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   margin-bottom: .5rem;
 }
+
 .hero-content p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
+
 .btn-primary {
   display: inline-block;
   background: var(--color-accent);
@@ -136,11 +104,12 @@ h2 {
   font-weight: 700;
   transition: background .2s;
 }
+
 .btn-primary:hover {
   background: #e65500;
 }
 
-/* ============ Общие карточки и «О нас» ============ */
+/* == Общие карточки == */
 .card-wrapper {
   max-width: 900px;
   margin: 2rem auto;
@@ -152,6 +121,8 @@ h2 {
   border-radius: .5rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
+
+/* == «О нас» == */
 .about-wrapper {
   display: flex;
   align-items: flex-start;
@@ -171,14 +142,31 @@ h2 {
   line-height: 1.5;
 }
 
-/* ============ Контакты и форма ============ */
+/* Стили для Swiper-контейнера */
+.all-events-swiper {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+.all-events-swiper .swiper-wrapper {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+}
+.swiper-slide {
+  flex: 0 0 calc((100% - 32px*2) / 3) !important; /* ровно 3 слайда, учитывая 16px отступ */
+  margin-right: 16px;
+}
+.swiper-slide:nth-child(3n) {
+  margin-right: 0;
+}
+
+/* == Контакты / Форма == */
 .contact-form {
   display: grid;
   gap: 1rem;
   margin-top: 1rem;
 }
-.contact-form input,
-.contact-form textarea {
+.contact-form input, .contact-form textarea {
   width: 100%;
   padding: .75rem;
   border: 1px solid #ccc;
@@ -199,7 +187,7 @@ h2 {
   background: #003366;
 }
 
-/* ============ Footer ============ */
+/* == Footer == */
 footer {
   text-align: center;
   padding: 1rem 0;
@@ -209,7 +197,7 @@ footer {
   margin-top: 2rem;
 }
 
-/* ============ Адаптив для мобильных ============ */
+/* == Адаптив == */
 @media (max-width: 768px) {
   .hero {
     height: auto;
@@ -224,15 +212,27 @@ footer {
   .about-logo {
     margin: 0 auto 1rem;
   }
-  /* tiny-slider responsive handled in JS */
+  /* Мобильные слайды */
+  .all-events-swiper .swiper-wrapper,
+  .category-swiper   .swiper-wrapper {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+  }
+
+  .all-events-swiper .swiper-slide,
+  .category-swiper   .swiper-slide {
+    flex: 0 0 100% !important;
+    margin-right: 0    !important;
+  }
 }
 
-/* ============ Фильтры и dropdown ============ */
+/* ====== Панель фильтров ====== */
 .filter-bar {
   display: flex;
   justify-content: center;
   background: var(--color-bg);
   border-radius: 2rem;
+  /* теперь видим выпадашку */
   overflow: visible;
   margin: 2rem auto;
   max-width: 800px;
@@ -244,12 +244,12 @@ footer {
   display: flex;
 }
 .filter-item-wrapper:first-child .filter-item {
-  border-top-left-radius: .5rem;
-  border-bottom-left-radius: .5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 }
 .filter-item-wrapper:last-child .filter-item {
-  border-top-right-radius: .5rem;
-  border-bottom-right-radius: .5rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 .filter-item-wrapper + .filter-item-wrapper {
   border-left: 1px solid rgba(255,255,255,0.3);
@@ -271,6 +271,8 @@ footer {
 .filter-bar .filter-item:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
+
+/* == Dropdown для ПВД == */
 .has-dropdown .dropdown {
   display: none;
   position: absolute;
@@ -290,14 +292,23 @@ footer {
   color: #fff;
 }
 .has-dropdown .dropdown .filter-item.active {
-  background: #003366;
-  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.05);
+  background: #003366; /* более тёмный синий — чтобы отличался от обычного */
+  color: #fff;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.05); /* для эффекта нажатия */
 }
 .has-dropdown .dropdown .filter-item:hover {
   background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.has-dropdown .dropdown .filter-item.active:hover {
+  background: var(--color-primary);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* ============ Соцсети и карточки ============ */
+/* ====================
+   Иконки соцсетей в контактах
+   ==================== */
 .social-links {
   display: flex;
   justify-content: center;
@@ -306,9 +317,12 @@ footer {
 }
 .social-link {
   display: inline-flex;
-  width: 50px; height: 50px;
-  align-items: center; justify-content: center;
-  border-radius: 50%; background: #fff;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #fff;
   transition: box-shadow .2s, transform .2s;
 }
 .social-link:hover {
@@ -319,52 +333,85 @@ footer {
 .social-link.tg { background: #29b6f6; }
 .social-link svg { width: 60%; height: 60%; fill: #fff; }
 
-/* ============ Карточка большого путешествия ============ */
+/* ====================
+   Равные высоты карточек
+   ==================== */
+.grid {
+  align-items: start; /* ячейки выравниваются по верху */
+}
+.service-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.service-card-content {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+.service-card-content p {
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+/* == Карточка большого путешествия == */
 .trip-card {
   background: #fff;
-  border-radius: .75rem;
+  border-radius: 0.75rem;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: box-shadow .2s;
   overflow: hidden;
   margin: 2rem auto;
   max-width: 400px;
   font-family: var(--font-body);
 }
+
 .trip-card:hover {
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
+
 .trip-card-img {
   width: 100%;
-  object-fit: cover;
   display: block;
+  object-fit: cover;
 }
+
 .trip-card-body {
   padding: 1.5rem;
+  font-size: 0.95rem;
   color: #333;
-  font-size: .95rem;
 }
+
 .trip-date {
   font-weight: bold;
-  font-size: .9rem;
+  font-size: 0.9rem;
   margin-bottom: 1rem;
   color: #444;
+  line-height: 1.4;
 }
+
 .trip-title {
   font-family: var(--font-heading);
   color: var(--color-accent);
   font-size: 1.2rem;
-  margin: .5rem 0 1rem;
+  margin: 0.5rem 0 1rem;
 }
+
 .trip-desc {
   margin-bottom: 1rem;
 }
+
 .trip-program {
-  margin: .5rem 0 1rem;
+  margin: 0.5rem 0 1rem;
   padding-left: 1.25rem;
-  list-style: disc;
+  list-style-type: disc;
 }
+
 .trip-program li {
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
 }
+
 .trip-price {
   color: #2e8b57;
   font-weight: bold;
