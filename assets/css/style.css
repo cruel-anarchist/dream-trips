@@ -212,17 +212,20 @@ footer {
   .about-logo {
     margin: 0 auto 1rem;
   }
-  /* Мобильные слайды */
+  
+  /* добавляем отступ слева у обёрток — чтобы первый слайд не прилипал к краю */
   .all-events-swiper .swiper-wrapper,
   .category-swiper   .swiper-wrapper {
     display: flex !important;
     flex-wrap: nowrap !important;
+    padding-left: 16px;
   }
 
+  /* задаём ширину slide = 100% минус два отступа (по 16px слева+справа) */
   .all-events-swiper .swiper-slide,
   .category-swiper   .swiper-slide {
-    flex: 0 0 100% !important;
-    margin-right: 0    !important;
+    flex: 0 0 calc(100% - 32px) !important;
+    margin-right: 16px !important;
   }
 }
 
