@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const parts = [];
           evt.km && parts.push(`Километраж: <b>${evt.km}</b>`);
           evt.level && parts.push(`Сложность: <b>${evt.level}</b>`);
-          evt.price && parts.push(`Стоимость: <span class=\"trip-price\">${evt.price}</span>`);
+          evt.price && parts.push(`Стоимость: <span class="trip-price">${evt.price}</span>`);
           parts.length ? meta.innerHTML = parts.join('<br>') : meta.remove();
 
           wr.appendChild(clone);
@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Создание нового
       swipers[grp] = new Swiper(el, {
-        modules: [Swiper.Navigation, Swiper.Pagination], // доступно в бандле
         navigation: {
           prevEl: el.querySelector('.swiper-button-prev'),
           nextEl: el.querySelector('.swiper-button-next')
