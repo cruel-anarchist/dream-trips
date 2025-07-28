@@ -333,8 +333,10 @@ footer {
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
 }
 
+.category-swiper .swiper-slide img,
 .trip-card-img {
   width: 100%;
+  aspect-ratio: 3 / 2;
   display: block;
   object-fit: cover;
 }
