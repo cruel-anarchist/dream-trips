@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
           img.src = evt.img;
           img.alt = evt.alt;
           // Заглушка если изображение не найдено
-          img.onerror = () => { img.src = 'assets/img/placeholder.png'; };
+          img.onerror = () => { img.src = 'assets/img/placeholder.jpg'; };
 
           clone.querySelector('.trip-title').textContent = evt.title;
           clone.querySelector('.trip-desc').textContent  = evt.desc;
