@@ -72,47 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
 
-    initSliders();
     initFiltering();
-  }
-
-  // Инициализация Keen Slider для каждой секции
-  function initSliders() {
-    sections.forEach(sec => {
-      const sliderEl = sec.querySelector('.category-swiper');
-      // Разрушаем предыдущий, если был
-      if (sliderEl.keen) sliderEl.keen.destroy();
-
-      // Создаём новый слайдер
-      const keen = new KeenSlider(sliderEl, {
-        loop: false,
-        spacing: 16,
-        slidesPerView: 3,
-        breakpoints: {
-          '(max-width: 768px)': {
-            slidesPerView: 1,
-            centered: true
-          },
-          '(min-width: 769px) and (max-width: 1024px)': {
-            slidesPerView: 2,
-            centered: false
-          },
-          '(min-width: 1025px)': {
-            slidesPerView: 3,
-            centered: false
-          }
-        }
-      });
-
-      // Сохраняем инстанс для пересборки при фильтрации
-      sliderEl.keen = keen;
-
-      // Навигация стрелками
-      const prevBtn = sec.querySelector('.arrow-prev');
-      const nextBtn = sec.querySelector('.arrow-next');
-      prevBtn.onclick = () => keen.prev();
-      nextBtn.onclick = () => keen.next();
-    });
   }
 
   // Настройка фильтрации секций
