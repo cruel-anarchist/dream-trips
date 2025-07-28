@@ -46,6 +46,20 @@ h2 {
   /* убираем жесткие ширины и отступы */
 }
 
+/* ============ Равная высота слайдов в Swiper ============ */
+/* Обёртка – выставляем всем слайдам одинаковую высоту */
+.all-events-swiper .swiper-wrapper,
+.category-swiper   .swiper-wrapper {
+  align-items: stretch; /* растягиваем слайды на всю высоту самого высокого */
+}
+
+/* Слайды – делаем flex‑контейнером, чтобы содержимое могло занять всю высоту */
+.all-events-swiper .swiper-slide,
+.category-swiper   .swiper-slide {
+  display: flex;
+  flex-direction: column;
+}
+
 /* ============ Hero с видеофоном ============ */
 .hero {
   position: relative;
