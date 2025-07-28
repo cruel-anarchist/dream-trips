@@ -6,22 +6,23 @@
   --font-body:     'Roboto', sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: var(--font-body);
-  background:   var(--color-bg);
-  color:        #111;
-  line-height:  1.5;
+  background: var(--color-bg);
+  color: #111;
+  line-height: 1.5;
 }
 
 h2 {
   text-align: center;
   margin-bottom: 1rem;
 }
-
-/* Убираем старый .grid для карточек */
-.grid { display: none; }
 
 /* Секция категорий */
 .category-section {
@@ -39,6 +40,85 @@ h2 {
   width: 100%;
 }
 
+/* === Выравнивание карточек одной высоты === */
+.category-swiper .swiper-wrapper {
+  display: flex !important;
+}
+.category-swiper .swiper-slide {
+  display: flex;
+  flex-direction: column;
+}
+.category-swiper .swiper-slide .trip-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Устанавливаем единую пропорцию для изображений */
+.category-swiper .swiper-slide img,
+.trip-card-img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+
+/* Тело карточки распространяется на оставшееся пространство */
+.trip-card-body {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* == Карточка большого путешествия == */
+.trip-card {
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: box-shadow .2s;
+  overflow: hidden;
+  margin: 2rem auto;
+  max-width: 400px;
+  font-family: var(--font-body);
+}
+.trip-card:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.trip-date {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: #444;
+  line-height: 1.4;
+}
+
+.trip-title {
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.trip-desc {
+  margin-bottom: 1rem;
+}
+
+.trip-program {
+  margin: 0.5rem 0 1rem;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+.trip-program li {
+  margin-bottom: 0.4rem;
+}
+
+.trip-price {
+  color: #2e8b57;
+  font-weight: bold;
+}
+
 /* == Hero == */
 .hero {
   position: relative;
@@ -50,7 +130,6 @@ h2 {
   text-align: center;
   color: #fff;
 }
-
 .hero-video {
   position: absolute;
   top: 0;
@@ -58,9 +137,8 @@ h2 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0; /* видео — за контентом */
+  z-index: 0;
 }
-
 .hero::after {
   content: '';
   position: absolute;
@@ -68,24 +146,20 @@ h2 {
   background: rgba(0,0,0,0.5);
   z-index: 1;
 }
-
 .hero-content {
   position: relative;
-  z-index: 2; /* текст и кнопка над затемнением */
+  z-index: 2;
   padding: 2rem 1rem;
 }
-
 .hero-content h1 {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   margin-bottom: .5rem;
 }
-
 .hero-content p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
-
 .btn-primary {
   display: inline-block;
   background: var(--color-accent);
@@ -96,7 +170,6 @@ h2 {
   font-weight: 700;
   transition: background .2s;
 }
-
 .btn-primary:hover {
   background: #e65500;
 }
@@ -140,7 +213,8 @@ h2 {
   gap: 1rem;
   margin-top: 1rem;
 }
-.contact-form input, .contact-form textarea {
+.contact-form input,
+.contact-form textarea {
   width: 100%;
   padding: .75rem;
   border: 1px solid #ccc;
@@ -194,7 +268,6 @@ footer {
   justify-content: center;
   background: var(--color-bg);
   border-radius: 2rem;
-  /* теперь видим выпадашку */
   overflow: visible;
   margin: 2rem auto;
   max-width: 800px;
