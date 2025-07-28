@@ -51,6 +51,43 @@ h2 {
 .category-swiper .tns-item:last-child {
   margin-right: 0;
 }
+.category-swiper .tns-controls button {
+  background: var(--color-accent);
+  color: #fff;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  line-height: 1;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .2s;
+}
+.category-swiper .tns-controls button:hover {
+  background: #e65500;
+}
+/* убираем возможные лишние иконки-фоны */
+.category-swiper .tns-controls button::before {
+  content: attr(data-controls) == 'prev' ? '‹' : '›';
+}
+/* подвинем их поверх слайдера */
+.category-swiper {
+  position: relative;
+}
+.category-swiper .tns-controls {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.category-swiper .tns-controls button {
+  pointer-events: all;
+}
 
 /* ============ Hero с видеофоном ============ */
 .hero {
