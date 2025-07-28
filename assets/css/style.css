@@ -198,7 +198,7 @@ footer {
 }
 
 /* == Адаптив == */
-@media (max-width: 768px) {
+@media (max-width: 639px) {
   .hero {
     height: auto;
     padding: 2rem 1rem;
