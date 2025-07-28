@@ -27,19 +27,39 @@ h2 {
   display: none;
 }
 
-/* ============ Равная высота слайдов в Swiper ============ */
-/* Обёртка – выставляем всем слайдам одинаковую высоту */
-.all-events-swiper .swiper-wrapper,
-.category-swiper   .swiper-wrapper {
-  align-items: stretch; /* растягиваем слайды на всю высоту самого высокого */
+/* ============ Секция категорий ============ */
+.category-section {
+  max-width: 900px;
+  margin: 2rem auto;
+}
+.category-section h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-/* Слайды – делаем flex‑контейнером, чтобы содержимое могло занять всю высоту */
-.all-events-swiper .swiper-slide,
-.category-swiper   .swiper-slide {
+/* ============ Стили для Keen Slider ============ */
+/* Контейнер слайдера */
+.category-swiper {
   display: flex;
+  align-items: stretch;        /* для равной высоты */
+  overflow: hidden;
+  padding-left: 1rem;          /* небольшой отступ слева */
+}
+
+/* Слайды */
+.category-swiper .keen-slider__slide {
+  flex: 0 0 calc((100% - 2 * 16px) / 3) !important; /* 3 в ряд на десктопе */
+  margin-right: 16px;
+  display: flex;               /* чтобы внутреннее содержимое могло растягиваться */
   flex-direction: column;
-  flex: 1 0 auto;
+}
+
+/* У последнего слайда в ряду убираем отступ справа */
+.category-swiper .keen-slider__slide:nth-child(3n) {
+  margin-right: 0;
 }
 
 /* ============ Hero с видеофоном ============ */
@@ -128,19 +148,6 @@ h2 {
   line-height: 1.5;
 }
 
-/* ============ Стили Swiper-контейнера ============ */
-.all-events-swiper {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-.all-events-swiper .swiper-wrapper {
-  /* сбрасываем кастомные правила */
-}
-.swiper-slide {
-  /* убираем жесткие правила, Swiper сам добавит spaceBetween */
-}
-
 /* ============ Контакты и форма ============ */
 .contact-form {
   display: grid;
@@ -199,12 +206,17 @@ footer {
     margin: 0 auto 1rem;
   }
 
-  /* только padding-left, остальные отступы ставит Swiper 
-  .all-events-swiper .swiper-wrapper,
-  .category-swiper .swiper-wrapper {
-    padding-left: 8px;
-    padding-right: 8px;
-  } */
+  /* на мобилке — 1 слайд в ряд, с отступами слева и справа */
+  .category-swiper {
+    padding-left: 16px;
+  }
+  .category-swiper .keen-slider__slide {
+    flex: 0 0 calc(100% - 32px) !important;
+    margin-right: 16px;
+  }
+  .category-swiper .keen-slider__slide:last-child {
+    margin-right: 0;
+  }
 }
 
 /* ============ Фильтры и Dropdown ============ */
@@ -284,7 +296,7 @@ footer {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* ============ Иконки соцсетей и равные высоты ============ */
+/* ============ Соцсети и карточки ============ */
 .social-links {
   display: flex;
   justify-content: center;
@@ -308,24 +320,6 @@ footer {
 .social-link.vk { background: #1876d2; }
 .social-link.tg { background: #29b6f6; }
 .social-link svg { width: 60%; height: 60%; fill: #fff; }
-.grid {
-  align-items: start;
-}
-.service-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-}
-.service-card-content {
-  flex: 1 1 auto;
-  display: flex;
-  flex-direction: column;
-}
-.service-card-content p {
-  line-height: 1.4;
-  overflow-wrap: break-word;
-}
 
 /* ============ Карточка большого путешествия ============ */
 .trip-card {
