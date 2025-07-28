@@ -134,24 +134,6 @@ h2 {
   line-height: 1.5;
 }
 
-/* Стили для Swiper-контейнера */
-.all-events-swiper {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-.all-events-swiper .swiper-wrapper {
-  display: flex !important;
-  flex-wrap: nowrap !important;
-}
-.swiper-slide {
-  flex: 0 0 calc((100% - 32px*2) / 3) !important; /* ровно 3 слайда, учитывая 16px отступ */
-  margin-right: 16px;
-}
-.swiper-slide:nth-child(3n) {
-  margin-right: 0;
-}
-
 /* == Контакты / Форма == */
 .contact-form {
   display: grid;
