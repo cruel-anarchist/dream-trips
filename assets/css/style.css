@@ -40,12 +40,13 @@ h2 {
 
 /* ============ Tiny Slider ============ */
 .category-swiper {
-  /* overflow скрываем все, навигация через controls */
-  overflow: hidden;
+  overflow: hidden;           /* прячет лишние элементы по краям */
+  padding-left: 16px;         /* отступ перед первым слайдом */
 }
-/* Накидка отступов для всех слайдов */
 .category-swiper .tns-item {
-  margin-right: 16px;
+  /* внутренний контейнер tiny-slider */
+  margin-right: 16px;         /* отступ между слайдами */
+  display: block;             /* чтобы flex-правила старые не мешали */
 }
 .category-swiper .tns-item:last-child {
   margin-right: 0;
