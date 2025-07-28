@@ -28,22 +28,24 @@ h2 {
 }
 
 /* ============ Секция категорий ============ */
-.category-section {
-  max-width: 900px;
-  margin: 2rem auto;
-}
-.category-section h3 {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  color: var(--color-primary);
-  text-align: center;
-  margin-bottom: 1rem;
-}
 .category-swiper .swiper-wrapper {
-  /* убираем кастомные flex-правила, пусть Swiper сам управляет */
+  /* вместо пустого правила: */
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch;        /* растягиваем все слайды по высоте самого высокого */
 }
+
 .category-swiper .swiper-slide {
-  /* убираем жесткие ширины и отступы */
+  /* вместо пустых ширин/отступов: */
+  display: flex;
+  flex-direction: column;      /* чтобы контент внутри мог растягиваться */
+  flex: 1 0 auto;              /* все слайды одинаковой высоты */
+  margin-right: 16px;          /* межслайдовый отступ */
+}
+
+/* чтобы последний слайд не имел лишнего отступа */
+.category-swiper .swiper-slide:nth-child(3n) {
+  margin-right: 0;
 }
 
 /* ============ Равная высота слайдов в Swiper ============ */
