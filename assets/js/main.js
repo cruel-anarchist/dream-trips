@@ -90,9 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
           clickable: true
         },
         breakpoints: {
-          0:    { slidesPerView: 1 },
-          640:  { slidesPerView: 2 },
-          1024: { slidesPerView: 3 }
+          0:    { slidesPerView: 1, centeredSlides: true,  spaceBetween: 16 },
+          640:  { slidesPerView: 2, centeredSlides: false, spaceBetween: 16 },
+          1024: { slidesPerView: 3, centeredSlides: false, spaceBetween: 16 }
         }
       });
     });
