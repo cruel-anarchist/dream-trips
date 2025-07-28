@@ -13,9 +13,9 @@
 }
 body {
   font-family: var(--font-body);
-  background:   var(--color-bg);
-  color:        #111;
-  line-height:  1.5;
+  background: var(--color-bg);
+  color: #111;
+  line-height: 1.5;
 }
 h2 {
   text-align: center;
@@ -23,9 +23,7 @@ h2 {
 }
 
 /* ===== Скрываем старую сетку ===== */
-.grid {
-  display: none;
-}
+.grid { display: none; }
 
 /* ============ Секция категорий ============ */
 .category-section {
@@ -40,16 +38,16 @@ h2 {
   margin-bottom: 1rem;
 }
 
-/* ============ Стили для Keen Slider ============ */
-/* Контейнер слайдера */
+/* ============ Tiny Slider ============ */
 .category-swiper {
-  padding-left: 16px;    /* отступ перед первым слайдом */
+  /* overflow скрываем все, навигация через controls */
   overflow: hidden;
 }
-.category-swiper .keen-slider__slide {
-  margin-right: 16px;   /* отступ между слайдами */
+/* Накидка отступов для всех слайдов */
+.category-swiper .tns-item {
+  margin-right: 16px;
 }
-.category-swiper .keen-slider__slide:last-child {
+.category-swiper .tns-item:last-child {
   margin-right: 0;
 }
 
@@ -66,23 +64,19 @@ h2 {
 }
 .hero-video {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   object-fit: cover;
-  z-index: 0; /* за контентом */
+  z-index: 0;
 }
 .hero::after {
   content: '';
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: rgba(0,0,0,0.5);
   z-index: 1;
 }
 .hero-content {
-  position: relative;
-  z-index: 2; /* над затемнением */
+  position: relative; z-index: 2;
   padding: 2rem 1rem;
 }
 .hero-content h1 {
@@ -108,7 +102,7 @@ h2 {
   background: #e65500;
 }
 
-/* ============ Общие карточки и о нас ============ */
+/* ============ Общие карточки и «О нас» ============ */
 .card-wrapper {
   max-width: 900px;
   margin: 2rem auto;
@@ -183,12 +177,8 @@ footer {
     height: auto;
     padding: 2rem 1rem;
   }
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-  .hero-content p {
-    font-size: 1rem;
-  }
+  .hero-content h1 { font-size: 2rem; }
+  .hero-content p  { font-size: 1rem; }
   .about-wrapper {
     flex-direction: column;
     text-align: center;
@@ -196,21 +186,10 @@ footer {
   .about-logo {
     margin: 0 auto 1rem;
   }
-
-  /* на мобилке — 1 слайд в ряд, с отступами слева и справа */
-  .category-swiper {
-    padding-left: 16px;
-  }
-  .category-swiper .keen-slider__slide {
-    flex: 0 0 calc(100% - 32px) !important;
-    margin-right: 16px;
-  }
-  .category-swiper .keen-slider__slide:last-child {
-    margin-right: 0;
-  }
+  /* tiny-slider responsive handled in JS */
 }
 
-/* ============ Фильтры и Dropdown ============ */
+/* ============ Фильтры и dropdown ============ */
 .filter-bar {
   display: flex;
   justify-content: center;
@@ -274,17 +253,10 @@ footer {
 }
 .has-dropdown .dropdown .filter-item.active {
   background: #003366;
-  color: #fff;
   box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.05);
 }
 .has-dropdown .dropdown .filter-item:hover {
   background: var(--color-primary);
-  color: #fff;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-}
-.has-dropdown .dropdown .filter-item.active:hover {
-  background: var(--color-primary);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 /* ============ Соцсети и карточки ============ */
@@ -296,12 +268,9 @@ footer {
 }
 .social-link {
   display: inline-flex;
-  width: 50px;
-  height: 50px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: #fff;
+  width: 50px; height: 50px;
+  align-items: center; justify-content: center;
+  border-radius: 50%; background: #fff;
   transition: box-shadow .2s, transform .2s;
 }
 .social-link:hover {
@@ -327,20 +296,19 @@ footer {
 }
 .trip-card-img {
   width: 100%;
-  display: block;
   object-fit: cover;
+  display: block;
 }
 .trip-card-body {
   padding: 1.5rem;
-  font-size: .95rem;
   color: #333;
+  font-size: .95rem;
 }
 .trip-date {
   font-weight: bold;
   font-size: .9rem;
   margin-bottom: 1rem;
   color: #444;
-  line-height: 1.4;
 }
 .trip-title {
   font-family: var(--font-heading);
@@ -354,7 +322,7 @@ footer {
 .trip-program {
   margin: .5rem 0 1rem;
   padding-left: 1.25rem;
-  list-style-type: disc;
+  list-style: disc;
 }
 .trip-program li {
   margin-bottom: .4rem;
