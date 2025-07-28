@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "type": ["all", "pvd", "allpvd", "hike"],
     "img": "assets/img/hike-ozera-podmoskovya.jpg",
     "alt": "ПВД Пеший: Озёра Подмосковья",
@@ -15,9 +16,11 @@
     ],
     "km": "25 км",
     "level": "легкая (2/5)",
-    "price": "4 500 рублей"
+    "price": "4 500 рублей",
+    "link": "tours.html?id=1"
   },
   {
+    "id": 2,
     "type": ["all", "pvd", "allpvd", "hike"],
     "img": "assets/img/hike-losiny-ostrov.jpg",
     "alt": "ПВД Пеший: Лосиный Остров",
@@ -33,9 +36,11 @@
     ],
     "km": "18 км",
     "level": "средняя (3/5)",
-    "price": "3 200 рублей"
+    "price": "3 200 рублей",
+    "link": "tours.html?id=2"
   },
   {
+    "id": 3,
     "type": ["all", "pvd", "allpvd", "hike"],
     "img": "assets/img/hike-kanal-moskva.jpg",
     "alt": "ПВД Пеший: Канал имени Москвы",
@@ -51,9 +56,11 @@
     ],
     "km": "22 км",
     "level": "легкая (2/5)",
-    "price": "3 800 рублей"
+    "price": "3 800 рублей",
+    "link": "tours.html?id=3"
   },
   {
+    "id": 4,
     "type": ["all", "pvd", "allpvd", "hike"],
     "img": "assets/img/hike-ivankovskoye-ozero.jpg",
     "alt": "ПВД Пеший: Иваньковское озеро",
@@ -69,9 +76,11 @@
     ],
     "km": "20 км",
     "level": "средняя (3/5)",
-    "price": "4 200 рублей"
+    "price": "4 200 рублей",
+    "link": "tours.html?id=4"
   },
   {
+    "id": 5,
     "type": ["all", "pvd", "allpvd", "hike"],
     "img": "assets/img/hike-raduzhny-les.jpg",
     "alt": "ПВД Пеший: Радужный лес",
@@ -87,9 +96,11 @@
     ],
     "km": "15 км",
     "level": "легкая (2/5)",
-    "price": "5 000 рублей"
+    "price": "5 000 рублей",
+    "link": "tours.html?id=5"
   },
   {
+    "id": 6,
     "type": ["all", "pvd", "allpvd", "raft"],
     "img": "assets/img/raft-klyazma.jpg",
     "alt": "ПВД Сплав: Река Клязьма",
@@ -105,9 +116,11 @@
     ],
     "km": "18 км",
     "level": "легкая (1/5)",
-    "price": "6 000 рублей"
+    "price": "6 000 рублей",
+    "link": "tours.html?id=6"
   },
   {
+    "id": 7,
     "type": ["all", "pvd", "allpvd", "raft"],
     "img": "assets/img/raft-moskva-river.jpg",
     "alt": "ПВД Сплав: Река Москва",
@@ -123,9 +136,11 @@
     ],
     "km": "20 км",
     "level": "легкая (1/5)",
-    "price": "6 500 рублей"
+    "price": "6 500 рублей",
+    "link": "tours.html?id=7"
   },
   {
+    "id": 8,
     "type": ["all", "pvd", "allpvd", "raft"],
     "img": "assets/img/raft-yauza.jpg",
     "alt": "ПВД Сплав: Река Яуза",
@@ -141,9 +156,11 @@
     ],
     "km": "12 км",
     "level": "легкая (1/5)",
-    "price": "5 800 рублей"
+    "price": "5 800 рублей",
+    "link": "tours.html?id=8"
   },
   {
+    "id": 9,
     "type": ["all", "pvd", "allpvd", "raft"],
     "img": "assets/img/raft-zelenogorskaya-lodka.jpg",
     "alt": "ПВД Сплав: Зеленогорская лодка",
@@ -159,9 +176,11 @@
     ],
     "km": "16 км",
     "level": "средняя (2/5)",
-    "price": "7 200 рублей"
+    "price": "7 200 рублей",
+    "link": "tours.html?id=9"
   },
   {
+    "id": 10,
     "type": ["all", "pvd", "allpvd", "raft"],
     "img": "assets/img/raft-river-prosoyaz.jpg",
     "alt": "ПВД Сплав: Река Пресня",
@@ -177,9 +196,11 @@
     ],
     "km": "22 км",
     "level": "средняя (3/5)",
-    "price": "6 900 рублей"
+    "price": "6 900 рублей",
+    "link": "tours.html?id=10"
   },
   {
+    "id": 11,
     "type": ["all", "big"],
     "img": "assets/img/kamchatka.jpg",
     "alt": "Камчатка",
@@ -195,9 +216,11 @@
     ],
     "km": "180 км",
     "level": "средняя (3/5)",
-    "price": "120 000 рублей"
+    "price": "120 000 рублей",
+    "link": "tours.html?id=11"
   },
   {
+    "id": 12,
     "type": ["all", "big"],
     "img": "assets/img/baikal.jpg",
     "alt": "Байкал",
@@ -213,9 +236,11 @@
     ],
     "km": "120 км",
     "level": "легкая (2/5)",
-    "price": "85 000 рублей"
+    "price": "85 000 рублей",
+    "link": "tours.html?id=12"
   },
   {
+    "id": 13,
     "type": ["all", "big"],
     "img": "assets/img/vyborg.jpg",
     "alt": "Выборг",
@@ -231,9 +256,11 @@
     ],
     "km": "15 км",
     "level": "легкая (1/5)",
-    "price": "30 000 рублей"
+    "price": "30 000 рублей",
+    "link": "tours.html?id=13"
   },
   {
+    "id": 14,
     "type": ["all", "big"],
     "img": "assets/img/karelia.jpg",
     "alt": "Карелия",
@@ -249,9 +276,11 @@
     ],
     "km": "200 км",
     "level": "средняя (3/5)",
-    "price": "110 000 рублей"
+    "price": "110 000 рублей",
+    "link": "tours.html?id=14"
   },
   {
+    "id": 15,
     "type": ["all", "big"],
     "img": "assets/img/altay.jpg",
     "alt": "Алтай",
@@ -267,9 +296,11 @@
     ],
     "km": "170 км",
     "level": "тяжелая (4/5)",
-    "price": "130 000 рублей"
+    "price": "130 000 рублей",
+    "link": "tours.html?id=15"
   },
   {
+    "id": 16,
     "type": ["all", "big"],
     "img": "assets/img/bajkal-safari.jpg",
     "alt": "Байкальское сафари",
@@ -285,6 +316,7 @@
     ],
     "km": "140 км",
     "level": "средняя (3/5)",
-    "price": "100 000 рублей"
+    "price": "100 000 рублей",
+    "link": "tours.html?id=16"
   }
 ]
