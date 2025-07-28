@@ -6,7 +6,7 @@
   <title>Турфирма «Мечта»</title>
   <link rel="icon" href="assets/img/logo.png" type="image/png" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Roboto&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/keen-slider@latest/keen-slider.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/tiny-slider.css"/>
   <link rel="stylesheet" href="assets/css/style.css"/>
 </head>
 <body>
@@ -33,46 +33,55 @@
 </header>
 
   <main>
-    <!-- Формат туров -->
+	<!-- Формат туров -->
 	<section id="services">
-	      <h2>Наши направления</h2>
-	      <div class="filter-bar" id="main-filters">
-	        <div class="filter-item-wrapper">
-	          <button class="filter-item active" data-filter="all">Все направления</button>
-	        </div>
-	        <div class="filter-item-wrapper has-dropdown">
-	          <button class="filter-item" data-filter="pvd">ПВД ▾</button>
-	          <div class="dropdown">
-	            <button class="filter-item" data-filter="allpvd">Все ПВД</button>
-	            <button class="filter-item" data-filter="hike">Пеший</button>
-	            <button class="filter-item" data-filter="raft">Сплав</button>
-	          </div>
-	        </div>
-	        <div class="filter-item-wrapper">
-	          <button class="filter-item" data-filter="big">Большие путешествия</button>
-	        </div>
+	  <h2>Наши направления</h2>
+	  <div class="filter-bar" id="main-filters">
+	    <div class="filter-item-wrapper">
+	      <button class="filter-item active" data-filter="all">Все направления</button>
+	    </div>
+	    <div class="filter-item-wrapper has-dropdown">
+	      <button class="filter-item" data-filter="pvd">ПВД ▾</button>
+	      <div class="dropdown">
+	        <button class="filter-item" data-filter="allpvd">Все ПВД</button>
+	        <button class="filter-item" data-filter="hike">Пеший</button>
+	        <button class="filter-item" data-filter="raft">Сплав</button>
 	      </div>
-	      <!-- Категории -->
-		<div class="category-section" data-group="hike">
-		  <h3>ПВД Пеший</h3>
-		  <div class="keen-slider category-swiper" id="slider-hike">
-		    <!-- JS-код подставит сюда .keen-slider__slide -->
-		  </div>
-		</div>
-		
-		<div class="category-section" data-group="raft">
-		  <h3>ПВД Сплав</h3>
-		  <div class="keen-slider category-swiper" id="slider-raft">
-		    <!-- сюда попадут .keen-slider__slide -->
-		  </div>
-		</div>
-		
-		<div class="category-section" data-group="big">
-		  <h3>Большие путешествия</h3>
-		  <div class="keen-slider category-swiper" id="slider-big">
-		    <!-- сюда попадут .keen-slider__slide -->
-		  </div>
-		</div>
+	    </div>
+	    <div class="filter-item-wrapper">
+	      <button class="filter-item" data-filter="big">Большие путешествия</button>
+	    </div>
+	  </div>
+	
+	  <!-- ПВД Пеший -->
+	  <div class="category-section" data-group="hike">
+	    <h3>ПВД Пеший</h3>
+	    <div class="keen-slider" id="slider-hike">
+	      <!-- JS вставит сюда <div class="keen-slider__slide">…</div> -->
+	    </div>
+	    <button type="button" class="arrow-prev" data-slider="hike">‹</button>
+	    <button type="button" class="arrow-next" data-slider="hike">›</button>
+	  </div>
+	
+	  <!-- ПВД Сплав -->
+	  <div class="category-section" data-group="raft">
+	    <h3>ПВД Сплав</h3>
+	    <div class="keen-slider" id="slider-raft">
+	      <!-- JS вставит сюда <div class="keen-slider__slide">…</div> -->
+	    </div>
+	    <button type="button" class="arrow-prev" data-slider="raft">‹</button>
+	    <button type="button" class="arrow-next" data-slider="raft">›</button>
+	  </div>
+	
+	  <!-- Большие путешествия -->
+	  <div class="category-section" data-group="big">
+	    <h3>Большие путешествия</h3>
+	    <div class="keen-slider" id="slider-big">
+	      <!-- JS вставит сюда <div class="keen-slider__slide">…</div> -->
+	    </div>
+	    <button type="button" class="arrow-prev" data-slider="big">‹</button>
+	    <button type="button" class="arrow-next" data-slider="big">›</button>
+	  </div>
 	</section>
 
     <!-- О компании -->
@@ -132,7 +141,7 @@
     &copy; Турфирма «Мечта», 2013–2025
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/keen-slider@latest/keen-slider.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.4/min/tiny-slider.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
