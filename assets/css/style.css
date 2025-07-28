@@ -1,3 +1,6 @@
+/* ====================
+   Переменные и базовые стили
+==================== */
 :root {
   --color-primary: #004080;
   --color-accent:  #ff6600;
@@ -24,106 +27,9 @@ h2 {
   margin-bottom: 1rem;
 }
 
-/* Секция категорий */
-.category-section {
-  max-width: 900px;
-  margin: 2rem auto;
-}
-.category-section h3 {
-  font-family: var(--font-heading);
-  font-size: 1.25rem;
-  color: var(--color-primary);
-  text-align: center;
-  margin-bottom: 1rem;
-}
-.category-swiper {
-  width: 100%;
-}
-
-/* === Выравнивание карточек одной высоты === */
-.category-swiper .swiper-wrapper {
-  display: flex !important;
-}
-.category-swiper .swiper-slide {
-  display: flex;
-  flex-direction: column;
-}
-.category-swiper .swiper-slide {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-/* Универсальные пропорции для изображений */
-.category-swiper .swiper-slide img,
-.trip-card-img {
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  display: block;
-}
-
-/* Тело карточки на всю оставшуюся высоту */
-.trip-card-body {
-  padding: 1.5rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-/* == Карточка == */
-.trip-card {
-  background: #fff;
-  border-radius: 0.75rem;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  transition: box-shadow .2s;
-  overflow: hidden;
-  margin: 2rem auto;
-  max-width: 400px;
-  font-family: var(--font-body);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.trip-card:hover {
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-}
-
-.trip-date {
-  font-weight: bold;
-  font-size: 0.9rem;
-  margin-bottom: 1rem;
-  color: #444;
-  line-height: 1.4;
-}
-
-.trip-title {
-  font-family: var(--font-heading);
-  color: var(--color-accent);
-  font-size: 1.2rem;
-  margin: 0.5rem 0 1rem;
-}
-
-.trip-desc {
-  margin-bottom: 1rem;
-}
-
-.trip-program {
-  margin: 0.5rem 0 1rem;
-  padding-left: 1.25rem;
-  list-style-type: disc;
-}
-.trip-program li {
-  margin-bottom: 0.4rem;
-}
-
-.trip-price {
-  color: #2e8b57;
-  font-weight: bold;
-}
-
-/* == Hero == */
+/* ====================
+   Hero блок
+==================== */
 .hero {
   position: relative;
   height: 60vh;
@@ -134,6 +40,7 @@ h2 {
   text-align: center;
   color: #fff;
 }
+
 .hero-video {
   position: absolute;
   top: 0;
@@ -143,6 +50,7 @@ h2 {
   object-fit: cover;
   z-index: 0;
 }
+
 .hero::after {
   content: '';
   position: absolute;
@@ -150,20 +58,27 @@ h2 {
   background: rgba(0,0,0,0.5);
   z-index: 1;
 }
+
 .hero-content {
   position: relative;
   z-index: 2;
   padding: 2rem 1rem;
 }
+
 .hero-content h1 {
   font-family: var(--font-heading);
   font-size: 2.5rem;
   margin-bottom: .5rem;
 }
+
 .hero-content p {
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
 }
+
+/* ====================
+   Кнопка (общая)
+==================== */
 .btn-primary {
   display: inline-block;
   background: var(--color-accent);
@@ -174,24 +89,126 @@ h2 {
   font-weight: 700;
   transition: background .2s;
 }
+
 .btn-primary:hover {
   background: #e65500;
 }
 
-/* == Общие карточки == */
-.card-wrapper {
+/* ====================
+   Секция категорий и слайдер
+==================== */
+.category-section {
   max-width: 900px;
   margin: 2rem auto;
-  padding: 0 1rem;
-}
-.card {
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: .5rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
 
-/* == «О нас» == */
+.category-section h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.category-swiper {
+  width: 100%;
+}
+
+.category-swiper .swiper-wrapper {
+  display: flex !important;
+  align-items: stretch !important;
+}
+
+.category-swiper .swiper-slide {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+
+.category-swiper .swiper-slide .trip-card {
+  height: 100%;
+}
+
+/* ====================
+   Карточка путешествия: 6 блоков
+==================== */
+.trip-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+  font-family: var(--font-body);
+}
+
+.trip-card:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+.trip-card-image img,
+.trip-card-img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+
+.trip-date {
+  font-weight: bold;
+  font-size: 0.9rem;
+  margin: 1rem 1.5rem 0.5rem;
+  color: #444;
+}
+
+.trip-title {
+  font-family: var(--font-heading);
+  color: var(--color-accent);
+  font-size: 1.2rem;
+  margin: 0 1.5rem 0.5rem;
+}
+
+.trip-desc {
+  margin: 0 1.5rem 0.5rem;
+  line-height: 1.5;
+}
+
+.trip-program {
+  margin: 0.5rem 1.5rem 1rem;
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.trip-program li {
+  margin-bottom: 0.4rem;
+}
+
+.trip-meta {
+  margin: 0 1.5rem 1rem;
+  font-size: 0.95rem;
+}
+
+.trip-meta strong {
+  font-weight: bold;
+}
+
+.trip-price {
+  color: #2e8b57;
+  font-weight: bold;
+}
+
+.trip-footer {
+  margin-top: auto;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #eee;
+  text-align: right;
+}
+
+/* ====================
+   Блок "О нас"
+==================== */
 .about-wrapper {
   display: flex;
   align-items: flex-start;
@@ -201,22 +218,43 @@ h2 {
   border-radius: .5rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.05);
 }
+
 .about-logo {
   width: 120px;
   flex-shrink: 0;
 }
+
 .about-text {
   flex: 1;
   font-size: 1rem;
   line-height: 1.5;
 }
 
-/* == Контакты / Форма == */
+/* ====================
+   Карточки вне слайдера (общие)
+==================== */
+.card-wrapper {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: .5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* ====================
+   Контакты и форма
+==================== */
 .contact-form {
   display: grid;
   gap: 1rem;
   margin-top: 1rem;
 }
+
 .contact-form input,
 .contact-form textarea {
   width: 100%;
@@ -225,6 +263,7 @@ h2 {
   border-radius: .25rem;
   font-size: 1rem;
 }
+
 .contact-form button {
   background: var(--color-primary);
   color: #fff;
@@ -235,11 +274,14 @@ h2 {
   cursor: pointer;
   transition: background .2s;
 }
+
 .contact-form button:hover {
   background: #003366;
 }
 
-/* == Footer == */
+/* ====================
+   Футер сайта
+==================== */
 footer {
   text-align: center;
   padding: 1rem 0;
@@ -249,24 +291,49 @@ footer {
   margin-top: 2rem;
 }
 
-/* == Адаптив == */
+/* ====================
+   Адаптивность
+==================== */
 @media (max-width: 768px) {
   .hero {
     height: auto;
     padding: 2rem 1rem;
   }
-  .hero-content h1 { font-size: 2rem; }
-  .hero-content p  { font-size: 1rem; }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
   .about-wrapper {
     flex-direction: column;
     text-align: center;
   }
+
   .about-logo {
     margin: 0 auto 1rem;
   }
+
+  .trip-title {
+    font-size: 1.1rem;
+  }
+
+  .trip-meta {
+    font-size: 0.9rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+    text-align: center;
+  }
 }
 
-/* ====== Панель фильтров ====== */
+/* ====================
+   Панель фильтров
+==================== */
 .filter-bar {
   display: flex;
   justify-content: center;
@@ -277,22 +344,27 @@ footer {
   max-width: 800px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
+
 .filter-item-wrapper {
   position: relative;
   flex: 1;
   display: flex;
 }
+
 .filter-item-wrapper:first-child .filter-item {
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
 }
+
 .filter-item-wrapper:last-child .filter-item {
   border-top-right-radius: 0.5rem;
   border-bottom-right-radius: 0.5rem;
 }
+
 .filter-item-wrapper + .filter-item-wrapper {
   border-left: 1px solid rgba(255,255,255,0.3);
 }
+
 .filter-bar .filter-item {
   flex: 1;
   padding: .75rem 1rem;
@@ -303,15 +375,19 @@ footer {
   font-family: var(--font-heading);
   transition: box-shadow .2s;
 }
+
 .filter-bar .filter-item.active {
   background: var(--color-primary);
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
+
 .filter-bar .filter-item:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* == Dropdown для ПВД == */
+/* ====================
+   Выпадающий фильтр (dropdown)
+==================== */
 .has-dropdown .dropdown {
   display: none;
   position: absolute;
@@ -324,38 +400,44 @@ footer {
   flex-direction: column;
   z-index: 10;
 }
+
 .has-dropdown:hover .dropdown {
   display: flex;
 }
+
 .has-dropdown .dropdown .filter-item {
   border-top: 1px solid rgba(255,255,255,0.3);
   background: var(--color-accent);
   color: #fff;
 }
+
 .has-dropdown .dropdown .filter-item.active {
   background: #003366;
   color: #fff;
   box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.05);
 }
+
 .has-dropdown .dropdown .filter-item:hover {
   background: var(--color-primary);
   color: #fff;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
+
 .has-dropdown .dropdown .filter-item.active:hover {
   background: var(--color-primary);
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
 /* ====================
-   Иконки соцсетей в контактах
-   ==================== */
+   Соцсети (иконки)
+==================== */
 .social-links {
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 1.5rem;
 }
+
 .social-link {
   display: inline-flex;
   width: 50px;
@@ -366,33 +448,42 @@ footer {
   background: #fff;
   transition: box-shadow .2s, transform .2s;
 }
+
 .social-link:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
-.social-link.vk { background: #1876d2; }
-.social-link.tg { background: #29b6f6; }
-.social-link svg { width: 60%; height: 60%; fill: #fff; }
+
+.social-link.vk {
+  background: #1876d2;
+}
+
+.social-link.tg {
+  background: #29b6f6;
+}
+
+.social-link svg {
+  width: 60%;
+  height: 60%;
+  fill: #fff;
+}
 
 /* ====================
-   Равные высоты карточек сервисов
-   ==================== */
-.grid {
-  display: grid;
-  gap: 1rem;
-  align-items: start;
-}
+   Универсальные карточки в .grid
+==================== */
 .service-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
 }
+
 .service-card-content {
   flex: 1 1 auto;
   display: flex;
   flex-direction: column;
 }
+
 .service-card-content p {
   line-height: 1.4;
   overflow-wrap: break-word;
