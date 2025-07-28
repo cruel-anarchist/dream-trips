@@ -58,6 +58,7 @@ h2 {
 .category-swiper   .swiper-slide {
   display: flex;
   flex-direction: column;
+  flex: 1 0 auto;
 }
 
 /* ============ Hero с видеофоном ============ */
@@ -217,12 +218,12 @@ footer {
     margin: 0 auto 1rem;
   }
 
-  /* только padding-left, остальные отступы ставит Swiper */
+  /* только padding-left, остальные отступы ставит Swiper 
   .all-events-swiper .swiper-wrapper,
   .category-swiper .swiper-wrapper {
     padding-left: 8px;
     padding-right: 8px;
-  }
+  } */
 }
 
 /* ============ Фильтры и Dropdown ============ */
