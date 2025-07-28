@@ -48,7 +48,7 @@ h2 {
   display: flex;
   flex-direction: column;
 }
-.category-swiper .swiper-slide .trip-card {
+.category-swiper .swiper-slide {
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -69,9 +69,10 @@ h2 {
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
-/* == Карточка большого путешествия == */
+/* == Карточка == */
 .trip-card {
   background: #fff;
   border-radius: 0.75rem;
@@ -81,6 +82,9 @@ h2 {
   margin: 2rem auto;
   max-width: 400px;
   font-family: var(--font-body);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 .trip-card:hover {
   box-shadow: 0 12px 30px rgba(0,0,0,0.15);
