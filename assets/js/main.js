@@ -73,30 +73,35 @@ document.addEventListener('DOMContentLoaded', () => {
     initFiltering();
   }
 
-  function initSwipers() {
-    sections.forEach(sec => {
-      const grp = sec.dataset.group;
-      const el  = sec.querySelector('.category-swiper');
-      if (swipers[grp]) swipers[grp].destroy(true, true);
-      swipers[grp] = new Swiper(el, {
-        slidesPerView: 3,
-        spaceBetween: 16,
-        navigation: {
-          prevEl: el.querySelector('.swiper-button-prev'),
-          nextEl: el.querySelector('.swiper-button-next'),
-        },
-        pagination: {
-          el: el.querySelector('.swiper-pagination'),
-          clickable: true
-        },
-        breakpoints: {
-          0:    { slidesPerView: 1 },
-          640:  { slidesPerView: 2 },
-          1024: { slidesPerView: 3 }
-        }
-      });
+function initSwipers() {
+  sections.forEach(sec => {
+    const grp = sec.dataset.group;
+    const el  = sec.querySelector('.category-swiper');
+    if (swipers[grp]) swipers[grp].destroy(true, true);
+
+    swipers[grp] = new Swiper(el, {
+      slidesPerView: 1,
+      spaceBetween: 16,
+      navigation: {
+        prevEl: el.querySelector('.swiper-button-prev'),
+        nextEl: el.querySelector('.swiper-button-next'),
+      },
+      pagination: {
+        el: el.querySelector('.swiper-pagination'),
+        clickable: true,
+      },
+      breakpoints: {
+        // при ≥640px — 2 слайда
+        640:  { slidesPerView: 2 },
+        // при ≥1024px — 3 слайда
+        1024: { slidesPerView: 3 }
+      },
+      observer: true,
+      observeParents: true,
+      touchEventsTarget: 'wrapper',
     });
-  }
+  });
+}
 
   function initFiltering() {
     // Применяет конкретный фильтр: показывает/скрывает секции
