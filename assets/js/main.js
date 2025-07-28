@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const parts = [];
           if (evt.km)    parts.push(`Километраж: <b>${evt.km}</b>`);
           if (evt.level) parts.push(`Сложность: <b>${evt.level}</b>`);
-          if (evt.price) parts.push(`Стоимость: <span class="trip-price">${evt.price}</span>`);
+          if (evt.price) parts.push(`Стоимость: <span class=\"trip-price\">${evt.price}</span>`);
           if (parts.length) meta.innerHTML = parts.join('<br>');
           else meta.remove();
 
