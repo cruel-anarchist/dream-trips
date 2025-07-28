@@ -215,12 +215,14 @@ footer {
   /* Мобильные слайды */
   .all-events-swiper .swiper-wrapper,
   .category-swiper   .swiper-wrapper {
+    width: 100%;
     display: flex !important;
     flex-wrap: nowrap !important;
   }
 
   .all-events-swiper .swiper-slide,
   .category-swiper   .swiper-slide {
+    width: 100%;
     flex: 0 0 100% !important;
     margin-right: 0    !important;
   }
