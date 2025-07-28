@@ -206,7 +206,8 @@ footer {
   /* только padding-left, остальные отступы ставит Swiper */
   .all-events-swiper .swiper-wrapper,
   .category-swiper .swiper-wrapper {
-    padding-left: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
   }
 }
 
