@@ -94,7 +94,7 @@ function initSwipers() {
         // при ≥640px — 2 слайда
         640:  { slidesPerView: 2 },
         // при ≥1024px — 3 слайда
-        1024: { slidesPerView: 3 }
+        940: { slidesPerView: 3 }
       },
       observer: true,
       observeParents: true,
