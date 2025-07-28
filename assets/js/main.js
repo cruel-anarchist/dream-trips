@@ -91,10 +91,9 @@ function initSwipers() {
         clickable: true,
       },
       breakpoints: {
-        // при ≥768px — 2 слайда
-        768:  { slidesPerView: 2 },
-        // при ≥1024px — 3 слайда
-        1024: { slidesPerView: 3 }
+        0:   { slidesPerView: 1 },
+        768: { slidesPerView: 2 },
+        1024:{ slidesPerView: 3 }
       },
       observer: true,
       observeParents: true,
