@@ -341,8 +341,7 @@ footer {
   }
 
   .category-swiper .swiper-button-prev,
-  .category-swiper .swiper-button-next,
-  .category-swiper .swiper-pagination {
+  .category-swiper .swiper-button-next {
     display: none;
   }
 }
