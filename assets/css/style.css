@@ -552,3 +552,42 @@ footer {
   line-height: 1.4;
   overflow-wrap: break-word;
 }
+
+/* Секция «Наша команда» */
+.team-section {
+  text-align: center;
+  padding: 2rem 1rem;
+}
+.team-section h2 {
+  font-family: var(--font-heading);
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+.team-members {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.team-member {
+  max-width: 200px;
+}
+.team-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.team-member h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.team-member p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #444;
+}
