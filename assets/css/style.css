@@ -339,6 +339,12 @@ footer {
     width: 100%;
     text-align: center;
   }
+
+  .category-swiper .swiper-button-prev,
+  .category-swiper .swiper-button-next,
+  .category-swiper .swiper-pagination {
+    display: none;
+  }
 }
 
 /* ====================
