@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -18,8 +18,38 @@
       <p class="trip-desc"></p>
       <ul class="trip-program"></ul>
       <div class="trip-meta"></div>
+
+      <!-- 6. Футер -->
       <div class="trip-footer">
-        <a href="index.html#services" class="btn-primary">Назад к списку туров</a>
+        <a href="index.html#services" class="btn-primary">← Назад</a>
+
+        <!-- Форма записи -->
+		<form id="booking-form" action="https://formspree.io/f/ВАШ_КОД" method="POST" class="booking-form">
+		  <!-- Скрытое поле с tourId -->
+		  <input type="hidden" name="tourId" value="" id="form-tour-id" />
+
+		  <!-- Количество участников -->
+		  <label for="participants-count">Количество участников</label>
+		  <select id="participants-count" name="participantsCount" required>
+			<option value="1" selected>1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		  </select>
+
+		  <!-- Контейнер для полей участника(ов) -->
+		  <div id="participants-fields">
+			<!-- Поля для 1-го участника по умолчанию -->
+			<div class="participant" data-index="1">
+			  <input type="text"  name="name[]"  placeholder="Имя участника 1" required />
+			  <input type="email" name="email[]" placeholder="E‑mail участника 1" required />
+			  <input type="tel"   name="phone[]" placeholder="Телефон участника 1" required />
+			</div>
+		  </div>
+
+		  <button type="submit" class="btn-primary">Записаться</button>
+		</form>
       </div>
     </div>
   </main>
