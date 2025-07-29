@@ -112,11 +112,13 @@ h2 {
 
 .category-swiper {
   width: 100%;
+  position: relative; 
 }
 
 .category-swiper .swiper-wrapper {
   display: flex !important;
   align-items: stretch !important;
+  padding-bottom: 3rem;
 }
 
 .category-swiper .swiper-slide {
@@ -127,6 +129,14 @@ h2 {
 
 .category-swiper .swiper-slide .trip-card {
   height: 100%;
+}
+
+.category-swiper .swiper-pagination {
+  position: absolute;
+  bottom: 0.5rem;            /* отодвигаем точки на 0.5rem от низа */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
 }
 
 /* ====================
