@@ -344,6 +344,22 @@ footer {
   .category-swiper .swiper-button-next {
     display: none;
   }
+
+  /* ==== Убираем скругления меню и кнопок фильтров ==== */
+  .filter-bar,
+  .filter-item,
+  .has-dropdown .dropdown {
+    border-radius: 0 !important;
+  }
+
+  /* Убираем скругления у крайних кнопок */
+  .filter-item-wrapper:first-child .filter-item,
+  .filter-item-wrapper:last-child .filter-item {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+  }
 }
 
 /* ====================
