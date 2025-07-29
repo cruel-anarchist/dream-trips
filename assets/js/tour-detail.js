@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     img.alt = tour.alt || tour.title;
     // === ЗАГЛУШКА ===
     img.onerror = () => {
-      img.src = 'assets/img/placeholder.jpg';  // путь до твоей заглушки
+      img.src = 'assets/img/placeholder.jpg';
       img.alt = 'Изображение недоступно';
     };
 
