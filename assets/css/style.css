@@ -139,6 +139,11 @@ h2 {
   z-index: 10;
 }
 
+.category-swiper .swiper-button-prev,
+.category-swiper .swiper-button-next {
+   display: none;
+}
+
 /* ====================
    Карточка путешествия: 6 блоков
 ==================== */
