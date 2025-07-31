@@ -8,12 +8,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
--    const resp = await fetch('events.json');
--    const tours = await resp.json();
-+    const resp = await fetch('events.json');
-+    const payload = await resp.json();
-+    // Данные теперь находятся в payload.data
-+    const tours = Array.isArray(payload.data) ? payload.data : [];
+    const resp = await fetch('events.json');
+    const tours = await resp.json();
     const tour = tours.find(t => (t.link || '').includes(tourId));
 
     if (!tour) {
@@ -48,9 +44,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const meta = document.querySelector('.trip-meta');
     const parts = [];
-    if (tour.km)    parts.push(`Километраж: <strong>${tour.km}</strong>`);
-    if (tour.level) parts.push(`Сложность: <strong>${tour.level}</strong>`);
-    if (tour.price) parts.push(`Стоимость: <span class="trip-price">${tour.price}</span>`);
+    if (tour.km)    parts.push(Километраж: <strong>${tour.km}</strong>);
+    if (tour.level) parts.push(Сложность: <strong>${tour.level}</strong>);
+    if (tour.price) parts.push(Стоимость: <span class="trip-price">${tour.price}</span>);
     meta.innerHTML = parts.join('<br>');
 
     // Подставляем tourId в скрытое поле формы записи
@@ -77,11 +73,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           const div = document.createElement('div');
           div.className = 'participant';
           div.dataset.index = i;
-          div.innerHTML = `
+          div.innerHTML = 
             <input type="text"  name="name[]"  placeholder="Имя участника ${i}" required />
             <input type="email" name="email[]" placeholder="E‑mail участника ${i}" required />
             <input type="tel"   name="phone[]" placeholder="Телефон участника ${i}" required />
-          `;
+          ;
           fieldsContainer.appendChild(div);
         }
       });
