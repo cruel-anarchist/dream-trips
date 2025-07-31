@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', async () => { 
+document.addEventListener('DOMContentLoaded', async () => {
   const params = new URLSearchParams(window.location.search);
   const tourId = params.get('id');
 
@@ -21,7 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     const img = document.querySelector('.trip-img');
     img.src = tour.img;
     img.alt = tour.alt || tour.title;
-    // === ЗАГЛУШКА ===
     img.onerror = () => {
       img.src = 'assets/img/placeholder.jpg';
       img.alt = 'Изображение недоступно';
@@ -32,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     document.querySelector('.trip-desc').textContent = tour.desc;
 
     const prog = document.querySelector('.trip-program');
-    // очистим старые
     prog.innerHTML = '';
     if (Array.isArray(tour.program)) {
       tour.program.forEach(item => {
@@ -44,17 +42,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const meta = document.querySelector('.trip-meta');
     const parts = [];
-    if (tour.km)    parts.push(Километраж: <strong>${tour.km}</strong>);
-    if (tour.level) parts.push(Сложность: <strong>${tour.level}</strong>);
-    if (tour.price) parts.push(Стоимость: <span class="trip-price">${tour.price}</span>);
+    if (tour.km)    parts.push(`Километраж: <strong>${tour.km}</strong>`);
+    if (tour.level) parts.push(`Сложность: <strong>${tour.level}</strong>`);
+    if (tour.price) parts.push(`Стоимость: <span class="trip-price">${tour.price}</span>`);
     meta.innerHTML = parts.join('<br>');
 
     // Подставляем tourId в скрытое поле формы записи
-    const bookingForm = document.getElementById('booking-form');
-    const tourInput   = document.getElementById('form-tour-id');
+    const tourInput = document.getElementById('form-tour-id');
     if (tourInput) tourInput.value = tourId;
 
-    // Динамика полей участников (если есть на странице)
+    // Динамика полей участников
     const countSelect     = document.getElementById('participants-count');
     const fieldsContainer = document.getElementById('participants-fields');
     if (countSelect && fieldsContainer) {
@@ -73,11 +70,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           const div = document.createElement('div');
           div.className = 'participant';
           div.dataset.index = i;
-          div.innerHTML = 
+          div.innerHTML = `
             <input type="text"  name="name[]"  placeholder="Имя участника ${i}" required />
-            <input type="email" name="email[]" placeholder="E‑mail участника ${i}" required />
+            <input type="email" name="email[]" placeholder="E-mail участника ${i}" required />
             <input type="tel"   name="phone[]" placeholder="Телефон участника ${i}" required />
-          ;
+          `;
           fieldsContainer.appendChild(div);
         }
       });
