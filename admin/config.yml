@@ -1,0 +1,37 @@
+site_url: "https://xn----7sbbtmyc1abrido3c.xn--p1ai"  # ваш домен в punycode
+
+backend:
+  name: github
+  repo: cruel-anarchist/dream-trips
+  branch: main
+  base_url: https://auth.decapcms.org
+  auth_endpoint: /auth
+
+media_folder: "assets/img"
+public_folder: "/assets/img"
+
+collections:
+  - name: "tours"
+    label: "Туры"
+    files:
+      - label: "JSON туров"
+        name: "tourdata"
+        file: "tours.json"
+        format: json
+        fields:
+          - label: "Туры"
+            name: ""
+            widget: list
+            fields:
+              - { label: "ID", name: "id", widget: number }
+              - { label: "Тип", name: "type", widget: list }
+              - { label: "Изображение", name: "img", widget: string }
+              - { label: "Alt", name: "alt", widget: string }
+              - { label: "Дата", name: "date", widget: string }
+              - { label: "Название", name: "title", widget: string }
+              - { label: "Описание", name: "desc", widget: text }
+              - { label: "Программа", name: "program", widget: list }
+              - { label: "Км", name: "km", widget: string }
+              - { label: "Сложность", name: "level", widget: string }
+              - { label: "Цена", name: "price", widget: string }
+              - { label: "Ссылка", name: "link", widget: string }
