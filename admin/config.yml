@@ -11,15 +11,15 @@ media_folder: "assets/img"
 public_folder: "/assets/img"
 
 collections:
-  - name: "tours"
-    label: "Туры"
+  - name: "events"
+    label: "События / Туры"
     files:
-      - label: "JSON туров"
-        name: "tourdata"
-        file: "tours.json"
+      - label: "JSON событий"
+        name: "eventdata"
+        file: "events.json"
         format: json
         fields:
-          - label: "Туры"
+          - label: "События"
             name: ""
             widget: list
             fields:
