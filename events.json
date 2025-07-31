@@ -1,4 +1,5 @@
-[
+{
+  "data": [
   {
     "id": 1,
     "type": ["all", "pvd", "allpvd", "hike"],
@@ -319,4 +320,5 @@
     "price": "100 000 рублей",
     "link": "tours.html?id=16"
   }
-]
+  ]
+}
