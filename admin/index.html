@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Админка</title>
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  </head>
-  <body>
-    <script>
-      window.CMS_MANUAL_INIT = true;
-    </script>
-    <div id="cms-root"></div>
-    <script>
-      CMS.init();
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Админка</title>
+</head>
+<body>
+  <div id="cms-root"></div>
+
+  <!-- Сначала загрузка CMS -->
+  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <!-- Затем инициализация -->
+  <script>
+    window.CMS_MANUAL_INIT = true;
+    window.addEventListener('load', () => {
+      if (typeof CMS !== 'undefined') {
+        CMS.init();
+      } else {
+        console.error("CMS is not defined");
+      }
+    });
+  </script>
+</body>
 </html>
