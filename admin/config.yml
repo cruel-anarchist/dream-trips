@@ -10,12 +10,18 @@ backend:
 media_folder: "assets/img"
 public_folder: "/assets/img"
 
+publish_mode: simple
+display_url: "https://xn----7sbbtmyc1abrido3c.xn--p1ai"
+
 collections:
   - name: "events"
     label: "События / Туры"
+    label_singular: "Событие"
+    editor:
+      preview: false
     files:
       - label: "JSON событий"
-        name: "eventdata"
+        name: "eventsdata"
         file: "events.json"
         format: json
         fields:
@@ -23,15 +29,15 @@ collections:
             name: "data"
             widget: list
             fields:
-              - { label: "ID", name: "id", widget: number }
-              - { label: "Тип", name: "type", widget: list }
-              - { label: "Изображение", name: "img", widget: string }
-              - { label: "Alt", name: "alt", widget: string }
-              - { label: "Дата", name: "date", widget: string }
-              - { label: "Название", name: "title", widget: string }
-              - { label: "Описание", name: "desc", widget: text }
-              - { label: "Программа", name: "program", widget: list }
-              - { label: "Км", name: "km", widget: string }
-              - { label: "Сложность", name: "level", widget: string }
-              - { label: "Цена", name: "price", widget: string }
-              - { label: "Ссылка", name: "link", widget: string }
+              - { label: "ID",          name: "id",      widget: number }
+              - { label: "Тип",         name: "type",    widget: list }
+              - { label: "Изображение", name: "img",     widget: string }
+              - { label: "Alt",         name: "alt",     widget: string }
+              - { label: "Дата",        name: "date",    widget: string }
+              - { label: "Название",    name: "title",   widget: string }
+              - { label: "Описание",    name: "desc",    widget: text }
+              - { label: "Программа",   name: "program", widget: list }
+              - { label: "Км",          name: "km",      widget: string }
+              - { label: "Сложность",   name: "level",   widget: string }
+              - { label: "Цена",        name: "price",   widget: string }
+              - { label: "Ссылка",      name: "link",    widget: string }
