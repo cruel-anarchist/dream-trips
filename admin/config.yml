@@ -20,7 +20,7 @@ collections:
         format: json
         fields:
           - label: "События"
-            name: ""
+            name: "data"
             widget: list
             fields:
               - { label: "ID", name: "id", widget: number }
