@@ -8,8 +8,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 
   try {
-    const resp = await fetch('events.json');
-    const tours = await resp.json();
+-    const resp = await fetch('events.json');
+-    const tours = await resp.json();
++    const resp = await fetch('events.json');
++    const payload = await resp.json();
++    // Данные теперь находятся в payload.data
++    const tours = Array.isArray(payload.data) ? payload.data : [];
     const tour = tours.find(t => (t.link || '').includes(tourId));
 
     if (!tour) {
