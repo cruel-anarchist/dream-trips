@@ -1,4 +1,4 @@
-site_url: "https://xn----7sbbtmyc1abrido3c.xn--p1ai"  # ваш домен в punycode
+site_url: "https://xn----7sbbtmyc1abrido3c.xn--p1ai"
 
 backend:
   name: github
